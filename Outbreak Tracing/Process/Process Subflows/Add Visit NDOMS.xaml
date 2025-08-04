@@ -1,0 +1,661 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Add_Visit_NDOMS" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:d="clr-namespace:DRACOE_PopUps_64;assembly=DRACOE.PopUps.64" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System.Private.CoreLib" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strCPH" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDisease" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Incident number WITHOUT year e.g. BTV3" Name="in_strIncidentNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDateVisitDue" Type="InArgument(x:String)" />
+    <x:Property Name="in_strInstructions" Type="InArgument(x:String)" />
+    <x:Property Name="in_strContactDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_strContactCase" Type="InArgument(x:String)" />
+    <x:Property Name="in_strTracingType" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Add_Visit_NDOMS.in_strCPH>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strCPH>
+  <this:Add_Visit_NDOMS.in_strDisease>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strDisease>
+  <this:Add_Visit_NDOMS.in_strIncidentNumber>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strIncidentNumber>
+  <this:Add_Visit_NDOMS.in_strDateVisitDue>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strDateVisitDue>
+  <this:Add_Visit_NDOMS.in_strInstructions>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strInstructions>
+  <this:Add_Visit_NDOMS.in_strContactDate>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strContactDate>
+  <this:Add_Visit_NDOMS.in_strContactCase>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strContactCase>
+  <this:Add_Visit_NDOMS.in_strTracingType>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Visit_NDOMS.in_strTracingType>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1410,7756.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Sequence5_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Exceptions</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>DRACOE_PopUps_64</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>DRACOE.PopUps.64</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Add Visit NDOMS" sap:VirtualizedContainerService.HintSize="665.6,7691.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - searching NDOMS" sap:VirtualizedContainerService.HintSize="603.6,143.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Searching NDOMS for CPH: '&quot;+in_strCPH+&quot;', JRF: '&quot;+in_strJRF+&quot;'&quot;]" />
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Chromium API input mode as default because Simulate is largely incompatible.&#xA;Simulate used where possible as it is faster - activities are annotated accordingly." AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS" sap:VirtualizedContainerService.HintSize="603.6,7396.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[g_Config(&quot;NDOMS_browser&quot;)]" ScopeGuid="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Navigate to visit details" sap:VirtualizedContainerService.HintSize="569.6,7214" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd1:DataTable" Name="dtVisits" />
+              <Variable x:TypeArguments="scg:List(x:String)" Name="listIncidents">
+                <Variable.Default>
+                  <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(of String)" />
+                </Variable.Default>
+              </Variable>
+              <Variable x:TypeArguments="scg:List(x:String)" Name="listIncidentsFiltered">
+                <Variable.Default>
+                  <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(of String)" />
+                </Variable.Default>
+              </Variable>
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Search" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/" DesignTimeRectangle="326, 861, 1045, 60" DesignTimeScaleFactor="2.5" FriendlyName="'Search Facility'" FullSelectorArgument="&lt;webctrl tag='H2' visibleinnertext='Search Facility' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H2' visibleinnertext='Search Facility' type='' class='leading-6 text-defra-warm-grey-900 text-base font-semibold group-hover:font-bold group-hover:text-defra-cyan-950' aaname='' check:text='Search Facility' /&gt;" Guid="d4df77fe-ddc5-43c4-97c1-b2c431769371" InformativeScreenshot="d9c281fbd5e152a7311bb32d328877e9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Welcome to NDOMS' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="266, 486, 3500, 75" ElementType="Text" FriendlyName="'APHA -'" FullSelectorArgument="&lt;webctrl tag='H1' aaname='APHA - Notifiable Disease Outbreak Management System ' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H1' aaname='APHA - Notifiable Disease Outbreak Management System ' type='' class='text-defra-red-900 text-2xl font-semibold leading-tight tracking-wide outline-none' check:text='APHA - Notifiable Disease Outbreak Management System (NDOMS)' /&gt;" SearchSteps="Selector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'CPH'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="507.6,220.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Text="[in_strCPH]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/search" DesignTimeRectangle="266, 696, 320, 70" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT cph'" FullSelectorArgument="&lt;webctrl id='cph' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='cph' tag='INPUT' type='text' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block w-32 rounded-md py-0.5 text-xs shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:leading-6' aaname='CPH' /&gt;" Guid="bba4d046-9aa2-47a5-9b66-2ee41eb3424c" ImageBase64="" InformativeScreenshot="d9f5080b55d332db2d28f09be19e889d.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Search Facility' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="266, 631, 320, 60" ElementType="Text" FriendlyName="'CPH'" FullSelectorArgument="&lt;webctrl aaname='CPH' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='CPH' tag='LABEL' type='' class='leading-6 text-defra-warm-grey-900 block text-xs font-semibold' check:innerText='CPH' /&gt;" ImageBase64="" SearchSteps="Selector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Input mode: Simulate" ClickType="Single" DisplayName="Click 'Search'" sap:VirtualizedContainerService.HintSize="507.6,189.2" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/search" DesignTimeRectangle="679, 2141, 179, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Search'" FullSelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Search' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Search' type='button' class='bg-defra-lime-green-200 text-defra-lime-green-950 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='                                 Search                             ' check:text='Search' /&gt;" Guid="fa3a3022-ae22-4e02-8131-c94ea29d261a" ImageBase64="" InformativeScreenshot="cae290a82847706debf94721601b4bf9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Search Facility' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="266, 1941, 1158, 60" ElementType="Text" FriendlyName="'Occupier Phone Number'" FullSelectorArgument="&lt;webctrl aaname='Phone Number' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Phone Number' tag='LABEL' type='' class='leading-6 text-defra-warm-grey-900 block text-xs font-semibold' check:innerText='Occupier&amp;#xD;&amp;#xA;Phone Number' /&gt;" SearchSteps="Selector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <Pick sap2010:Annotation.AnnotationText="Search results page does not always return in the same way. Sometimes it goes straight through to the record for the CPH searched, other times it returns a table of results from which the record must be clicked (even with only one result)." DisplayName="Pick - CPH search results" sap:VirtualizedContainerService.HintSize="507.6,212.8" sap2010:WorkflowViewState.IdRef="Pick_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <PickBranch DisplayName="One result, no table returned" sap:VirtualizedContainerService.HintSize="383.6,809.2" sap2010:WorkflowViewState.IdRef="PickBranch_3">
+                <PickBranch.Trigger>
+                  <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Visits button" sap:VirtualizedContainerService.HintSize="334,86.8" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="83023d5f-151d-4274-93f3-af7893c6584c" Selector="&lt;webctrl aaname='Visits' tag='A' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
+                </PickBranch.Trigger>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Visits'" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152" DesignTimeRectangle="2007, 466, 99, 55" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'Visits'" FullSelectorArgument="&lt;webctrl aaname='Visits' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Visits' tag='A' type='' class='border-b-2 text-defra-warm-grey-700 inline-flex items-center border-transparent px-1 pt-1 text-xs font-medium hover:border-defra-cyan-700 hover:text-defra-cyan-950' check:innerText='Visits' /&gt;" Guid="f27fb264-269c-484d-9231-2f5168f13373" ImageBase64="" InformativeScreenshot="2b5e3cd2144a1e1cadd3140ba5776c4a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Premises Details for Premises*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="1657, 466, 290, 55" ElementType="Text" FriendlyName="'Restrictions/Forms'" FullSelectorArgument="&lt;webctrl aaname='Restrictions/Forms' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Restrictions/Forms' tag='A' type='' class='border-b-2 text-defra-warm-grey-700 inline-flex items-center border-transparent px-1 pt-1 text-xs font-medium hover:border-defra-cyan-700 hover:text-defra-cyan-950' check:innerText='Restrictions/Forms' /&gt;" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+              </PickBranch>
+              <PickBranch DisplayName="Table of results returned" sap:VirtualizedContainerService.HintSize="499.6,809.2" sap2010:WorkflowViewState.IdRef="PickBranch_4">
+                <PickBranch.Trigger>
+                  <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="View premises table" sap:VirtualizedContainerService.HintSize="334,106.8" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f75e1490-8052-4390-8f25-968bbba94b7d" InformativeScreenshot="3235219fefa9766ab2579e0f8f79092a" Selector="&lt;webctrl tag='H1' visibleinnertext='Search Results' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
+                </PickBranch.Trigger>
+                <Sequence DisplayName="Click view premises first" sap:VirtualizedContainerService.HintSize="450,501.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Input mode: Simulate" ClickType="Single" DisplayName="Click 'View Premises'" sap:VirtualizedContainerService.HintSize="388,189.2" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/search" DesignTimeRectangle="276, 927, 217, 42" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'View Premises'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='A' aaname='View Premises {0}' /&gt;&quot;, in_strCPH)]" Guid="d7667429-4092-4eca-b5ba-27a481a58759" ImageBase64="" InformativeScreenshot="b2ad1fd9401811ffd209a34082eb953b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Search Results' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Visits'" sap:VirtualizedContainerService.HintSize="388,158" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152" DesignTimeRectangle="2007, 466, 99, 55" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'Visits'" FullSelectorArgument="&lt;webctrl aaname='Visits' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Visits' tag='A' type='' class='border-b-2 text-defra-warm-grey-700 inline-flex items-center border-transparent px-1 pt-1 text-xs font-medium hover:border-defra-cyan-700 hover:text-defra-cyan-950' check:innerText='Visits' /&gt;" Guid="f27fb264-269c-484d-9231-2f5168f13373" ImageBase64="" InformativeScreenshot="2b5e3cd2144a1e1cadd3140ba5776c4a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Premises Details for Premises*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="1657, 466, 290, 55" ElementType="Text" FriendlyName="'Restrictions/Forms'" FullSelectorArgument="&lt;webctrl aaname='Restrictions/Forms' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Restrictions/Forms' tag='A' type='' class='border-b-2 text-defra-warm-grey-700 inline-flex items-center border-transparent px-1 pt-1 text-xs font-medium hover:border-defra-cyan-700 hover:text-defra-cyan-950' check:innerText='Restrictions/Forms' /&gt;" SearchSteps="Selector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </PickBranch>
+              <PickBranch DisplayName="No results" sap:VirtualizedContainerService.HintSize="383.6,809.2" sap2010:WorkflowViewState.IdRef="PickBranch_5">
+                <PickBranch.Trigger>
+                  <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="No premises found text" sap:VirtualizedContainerService.HintSize="334,86.8" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="94d60664-6492-4a77-aaef-db42348f08d7" Selector="&lt;webctrl tag='H1' visibleinnertext='There are no records which match your search criteria.' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
+                </PickBranch.Trigger>
+                <Throw DisplayName="Throw BRE - no CPH found" Exception="[new BusinessRuleException(&quot;CPH '&quot;+in_strCPH+&quot;' not found in NDOMS search.&quot;)]" sap:VirtualizedContainerService.HintSize="334,91.2" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </PickBranch>
+            </Pick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Visit'" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits" DesignTimeRectangle="3413, 931, 353, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add New Visit'" FullSelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Add New Visit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Add New Visit' type='button' class='bg-defra-lime-green-200 text-defra-lime-green-950 inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='                                     Add New Visit                                     ' check:text='Add New Visit' /&gt;" Guid="1941f7c4-3c4e-400a-bba9-74f4dd000e01" InformativeScreenshot="b2574b3e9f3981b23549f2908d0006ee.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Visits for Premises ID*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NSelectItem DisplayName="Select Disease" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[in_strDisease]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="50">
+                  <x:String></x:String>
+                  <x:String>African Horse Sickness</x:String>
+                  <x:String>African Swine Fever</x:String>
+                  <x:String>Anthrax</x:String>
+                  <x:String>Aujeszky's Disease</x:String>
+                  <x:String>Avian Influenza</x:String>
+                  <x:String>Babesia</x:String>
+                  <x:String>Bluetongue</x:String>
+                  <x:String>Brucella Abortus</x:String>
+                  <x:String>Brucella Canis</x:String>
+                  <x:String>Brucella Melitensis</x:String>
+                  <x:String>Brucella Ovis</x:String>
+                  <x:String>Brucella Suis</x:String>
+                  <x:String>Classical Swine Fever</x:String>
+                  <x:String>Contagious Agalactia</x:String>
+                  <x:String>Contagious Bovine Pleuro-Pneumonia</x:String>
+                  <x:String>Contagious Caprine Pleuro-Pneumonia</x:String>
+                  <x:String>Contagious Equine Metritis</x:String>
+                  <x:String>Dourine</x:String>
+                  <x:String>Echinococcus (E. Multilocularis)</x:String>
+                  <x:String>Enzootic Bovine Leukosis</x:String>
+                  <x:String>Epizootic Haemorrhagic Virus Disease</x:String>
+                  <x:String>Epizootic Lymphangitis</x:String>
+                  <x:String>Equine Infectious Anaemia</x:String>
+                  <x:String>Equine Viral Arteritis</x:String>
+                  <x:String>Equine Viral Encephalomyelitis</x:String>
+                  <x:String>European Bat Lyssavirus</x:String>
+                  <x:String>FMD</x:String>
+                  <x:String>Glanders and Farcy</x:String>
+                  <x:String>Goat Pox</x:String>
+                  <x:String>Heartwater</x:String>
+                  <x:String>Hendra</x:String>
+                  <x:String>IAOC - Captive</x:String>
+                  <x:String>IAOD - Domestic</x:String>
+                  <x:String>Lumpy Skin Disease</x:String>
+                  <x:String>New World Screwworm</x:String>
+                  <x:String>Newcastle Disease</x:String>
+                  <x:String>Nipah</x:String>
+                  <x:String>Paramyxovirus</x:String>
+                  <x:String>Peste Des Petits Ruminants</x:String>
+                  <x:String>Psittacosis</x:String>
+                  <x:String>Rabies</x:String>
+                  <x:String>Rift Valley Fever</x:String>
+                  <x:String>Rinderpest</x:String>
+                  <x:String>Salmonella</x:String>
+                  <x:String>Salmonella (Strain B Vaccine)</x:String>
+                  <x:String>Salmonella (Strain B Non-Vaccine)</x:String>
+                  <x:String>Salmonella (Strain D Vaccine)</x:String>
+                  <x:String>Salmonella (Strain D Non-Vaccine)</x:String>
+                  <x:String>SARS-CoV-2</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 696, 775, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT diseasetype'" FullSelectorArgument="&lt;webctrl id='diseasetype' tag='SELECT' aaname='Disease' /&gt;" FuzzySelectorArgument="&lt;webctrl id='diseasetype' tag='SELECT' aaname='Disease' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="55636136-2dc9-47e9-9dec-d31266d02dfb" ImageBase64="" InformativeScreenshot="ac24a96fa8de7d749a2517e8c605e026.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NGetAttributeGeneric x:TypeArguments="scg:List(x:String)" Attribute="items" DisplayName="Get selectable incidents" sap:VirtualizedContainerService.HintSize="507.6,209.2" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_1" Result="[listIncidents]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NGetAttributeGeneric.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1326, 517, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT outbreakincident'" FullSelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' /&gt;" FuzzySelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 sm:text-sm sm:leading-6' /&gt;" Guid="a33f3c7f-eb42-4869-8c84-98ba5a807324" InformativeScreenshot="d32627429c6466750e39db7cd6f1ca81.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NGetAttributeGeneric.Target>
+            </uix:NGetAttributeGeneric>
+            <Assign sap2010:Annotation.AnnotationText="Format of incident number + year e.g. &quot;BTV3 2024&quot;" DisplayName="Get relevant incident numbers" sap:VirtualizedContainerService.HintSize="507.6,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[listIncidents]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[listIncidents.Where(function(x) Regex.Match(x, "^"+in_strIncidentNumber+" 20[0-9]{2}$").Success).ToList]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <If Condition="[listIncidents.Count=0]" DisplayName="If no suitable incident numbers returned" sap:VirtualizedContainerService.HintSize="507.6,362.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,179.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw BRE - no suitable incident number" Exception="[new BusinessRuleException(&quot;No incident numbers of expected format '&quot;+in_strIncidentNumber+&quot; 20xx' returned. The following selectable incident numbers were available: &quot;+Environment.NewLine+String.Join(Environment.NewLine+&quot;, &quot;,listIncidents))]" sap:VirtualizedContainerService.HintSize="334,91.2" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="300,81.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <InvokeMethod DisplayName="Sort list alphabetically" sap:VirtualizedContainerService.HintSize="507.6,139.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Sort">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="scg:List(x:String)">[listIncidentsFiltered]</InArgument>
+              </InvokeMethod.TargetObject>
+            </InvokeMethod>
+            <uix:NSelectItem DisplayName="Select Incident Number with latest year" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[listIncidentsFiltered.Last]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String></x:String>
+                  <x:String>BTV_2024_NDOMSUAT</x:String>
+                  <x:String>BTV_2024_testNDOMS</x:String>
+                  <x:String>MIDAS BTV TEST</x:String>
+                  <x:String>PW20240729</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1326, 517, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT outbreakincident'" FullSelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' /&gt;" FuzzySelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 sm:text-sm sm:leading-6' /&gt;" Guid="12b16083-7ac6-4248-8c0b-4ba8c7372af3" InformativeScreenshot="06dbd9ec01922cfe9b5780221f884c1d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'JRF Raised Date'" sap:VirtualizedContainerService.HintSize="507.6,252" sap2010:WorkflowViewState.IdRef="NInjectJsScript_1" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xD;&#xA;  const input = document.getElementById(&quot;&quot;jrfraiseddate&quot;&quot;);&#xD;&#xA;  input.value = in_date;&#xD;&#xA;&#xD;&#xA;  // Trigger input event&#xD;&#xA;  const event = new Event('input', { bubbles: true });&#xD;&#xA;  input.dispatchEvent(event);&#xD;&#xA;&#xD;&#xA;  // Optional: Also trigger change event&#xD;&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xD;&#xA;  input.dispatchEvent(changeEvent);&#xD;&#xA;}&quot;]" Version="V3">
+              <uix:NInjectJsScript.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1531, 375, 80" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT jrfraiseddate'" FullSelectorArgument="&lt;webctrl id='jrfraiseddate' tag='INPUT' aaname='JRF Raised Date' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jrfraiseddate' tag='INPUT' aaname='JRF Raised Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="aa394236-35f6-418e-adc2-1e9ee6c177ca" InformativeScreenshot="3fcde58bfbd7b968a383222c2fe8a1d3.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NInjectJsScript.Target>
+            </uix:NInjectJsScript>
+            <uix:NSelectItem DisplayName="Select JRF Raised By" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Tracings (SSC)" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="11">
+                  <x:String>Allocations</x:String>
+                  <x:String>Disease Report</x:String>
+                  <x:String>Epidemiology</x:String>
+                  <x:String>Field Operations</x:String>
+                  <x:String>Licensing</x:String>
+                  <x:String>Licensing (SSC)</x:String>
+                  <x:String>Restocking</x:String>
+                  <x:String>Surveillance</x:String>
+                  <x:String>Surveillance (SSC)</x:String>
+                  <x:String>Tracings</x:String>
+                  <x:String>Tracings (SSC)</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="786, 1531, 439, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT jrfraisedby'" FullSelectorArgument="&lt;webctrl id='jrfraisedby' tag='SELECT' aaname='JRF Raised By' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jrfraisedby' tag='SELECT' aaname='JRF Raised By' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="d40bdb81-6b93-49c9-9d83-715060a1033f" InformativeScreenshot="db877d6faac407acbea495dfbe70572b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Date Visit Due'" sap:VirtualizedContainerService.HintSize="507.6,252" sap2010:WorkflowViewState.IdRef="NInjectJsScript_2" InputParameter="[in_strDateVisitDue]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xD;&#xA;  const input = document.getElementById(&quot;&quot;visitduedate&quot;&quot;);&#xD;&#xA;  input.value = in_date;&#xD;&#xA;&#xD;&#xA;  // Trigger input event&#xD;&#xA;  const event = new Event('input', { bubbles: true });&#xD;&#xA;  input.dispatchEvent(event);&#xD;&#xA;&#xD;&#xA;  // Optional: Also trigger change event&#xD;&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xD;&#xA;  input.dispatchEvent(changeEvent);&#xD;&#xA;}&quot;]" Version="V3">
+              <uix:NInjectJsScript.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1766, 375, 80" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT visitduedate'" FullSelectorArgument="&lt;webctrl id='visitduedate' tag='INPUT' aaname='Date Visit Due' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visitduedate' tag='INPUT' aaname='Date Visit Due' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="d17e85c7-349d-42ed-a892-078601f0755d" InformativeScreenshot="340df3dc77d407c9c57881636acd248e.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NInjectJsScript.Target>
+            </uix:NInjectJsScript>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Instructions" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="507.6,220.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Text="[in_strInstructions]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1046, 3475, 230" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'TEXTAREA instructions'" FullSelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' /&gt;" FuzzySelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' type='text' class='border-0 text-defra-warm-grey-900 block w-full rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="b7f9d41a-298d-434c-b176-ea414eda786f" InformativeScreenshot="eeea13b58ea90a6f7c1352e612e75c94.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - clinical inspection/examination" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1089, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Clinical Inspection/Exa…'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' type='' class='' check:innerText='Clinical Inspection/Examination' /&gt;" Guid="5fde11ff-0fb9-4c8f-9078-41c99c50d7a5" InformativeScreenshot="ddd547164f2467125135e8f4906cf9cc.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:BlockUserInput TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Prevent users interrupting the hardware clicks necessary at this stage." BlockType="All" DisplayName="Block User Input - select additional visit types" sap:VirtualizedContainerService.HintSize="507.6,1184.4" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="Alt" SpecialKey="True">
+              <ui:BlockUserInput.Body>
+                <Sequence DisplayName="Select additional visit types" sap:VirtualizedContainerService.HintSize="472,985.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - sampling epidemiology blood" sap:VirtualizedContainerService.HintSize="410,158" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 975, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Sampling Epidemiology'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Sampling Epidemiology Blood' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Sampling Epidemiology Blood' tag='OPTION' type='' class='' check:innerText='Sampling Epidemiology Blood' /&gt;" Guid="4221131f-5d7b-40d4-a966-bf476780c8dc" InformativeScreenshot="1ad1d51ad557f7436b0c98dc34442195.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <If Condition="[g_Config(&quot;FormType&quot;).ToString=&quot;Zonal&quot;]" DisplayName="Zonal or Confirmed Cases?" sap:VirtualizedContainerService.HintSize="410,676" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,246.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - visit tracings zonal move" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1109, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Visit Tracings'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings Zonal Move' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings Zonal Move' tag='OPTION' type='' class='' check:innerText='Visit Tracings Zonal Move' /&gt;" Guid="d0dd9866-34a7-4d24-880a-f34fbe5fd038" InformativeScreenshot="f43e7607385d6f87eca64fffa84a9061.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,246.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - visit tracings" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1065, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Visit Tracings'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings' tag='OPTION' type='' class='' check:innerText='Visit Tracings' /&gt;" Guid="ce9af9cb-9a1e-4b3a-9587-e327fd5501e4" InformativeScreenshot="bb3638d267a7798b3730a655d081481a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:BlockUserInput.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:BlockUserInput>
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Contact Date'" sap:VirtualizedContainerService.HintSize="507.6,252" sap2010:WorkflowViewState.IdRef="NInjectJsScript_3" InputParameter="[in_strContactDate]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xD;&#xA;  const input = document.getElementById(&quot;&quot;contactdate&quot;&quot;);&#xD;&#xA;  input.value = in_date;&#xD;&#xA;&#xD;&#xA;  // Trigger input event&#xD;&#xA;  const event = new Event('input', { bubbles: true });&#xD;&#xA;  input.dispatchEvent(event);&#xD;&#xA;&#xD;&#xA;  // Optional: Also trigger change event&#xD;&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xD;&#xA;  input.dispatchEvent(changeEvent);&#xD;&#xA;}&quot;]" Version="V3">
+              <uix:NInjectJsScript.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="1186, 1724, 375, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT contactdate'" FullSelectorArgument="&lt;webctrl id='contactdate' tag='INPUT' aaname='Contact Date' /&gt;" FuzzySelectorArgument="&lt;webctrl id='contactdate' tag='INPUT' aaname='Contact Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="6c0e0dc7-5251-428a-860c-b2429b4bffa9" InformativeScreenshot="fb0f33a41ff54eab30c89425afd7e052.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NInjectJsScript.Target>
+            </uix:NInjectJsScript>
+            <uix:NSelectItem DisplayName="Select Contact Case" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[in_strContactCase]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="1">
+                  <x:String></x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="2080, 1112, 130, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT eventid'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Contact Case (* cases)' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Contact Case (* cases)' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block truncate rounded-md py-1.5 shadow-sm ring-inset focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:max-w-xs sm:text-sm sm:leading-6' /&gt;" Guid="66c683a7-86d7-4c17-bcf8-84a124168c19" InformativeScreenshot="da664e39e8e2279230d49a8d3b740e79.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NSelectItem DisplayName="Select Tracing Type" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="[in_strTracingType]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String></x:String>
+                  <x:String>Cohorts and offspring</x:String>
+                  <x:String>Source</x:String>
+                  <x:String>Source and Spread</x:String>
+                  <x:String>Spread</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 758, 492, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT tracetypes'" FullSelectorArgument="&lt;webctrl id='tracetypes' tag='SELECT' aaname='Tracing Type' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tracetypes' tag='SELECT' aaname='Tracing Type' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block truncate rounded-md py-1.5 shadow-sm ring-inset focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:max-w-xs sm:text-sm sm:leading-6' /&gt;" Guid="c0278c22-b4c9-4e06-867c-ba75eb0fc81d" InformativeScreenshot="427e670b125d2a063f19f20faba1092a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NSelectItem DisplayName="Select Contact Type" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="Animal (Ind reg)" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="9">
+                  <x:String></x:String>
+                  <x:String>ABP</x:String>
+                  <x:String>Animal (Batch)</x:String>
+                  <x:String>Animal (Ind reg)</x:String>
+                  <x:String>Egg</x:String>
+                  <x:String>Equipment</x:String>
+                  <x:String>Material</x:String>
+                  <x:String>Person</x:String>
+                  <x:String>Vehicle</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="1186, 758, 394, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT dangerouscontact…'" FullSelectorArgument="&lt;webctrl id='dangerouscontacttypes' tag='SELECT' aaname='Contact Type' /&gt;" FuzzySelectorArgument="&lt;webctrl id='dangerouscontacttypes' tag='SELECT' aaname='Contact Type' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block truncate rounded-md py-1.5 shadow-sm ring-inset focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:max-w-xs sm:text-sm sm:leading-6' /&gt;" Guid="5902b3ab-a052-427c-98c1-1f94e482bc51" InformativeScreenshot="1c84432348988eb6915968f304ddca58.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <If Condition="[CBool(g_Config(&quot;boolPausePoint3&quot;))]" DisplayName="Pause Point 3?" sap:VirtualizedContainerService.HintSize="507.6,1030" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,846.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <InvokeMethod DisplayName="Stop timer - PP3" sap:VirtualizedContainerService.HintSize="334,136.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Stop">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
+                    </InvokeMethod.TargetObject>
+                  </InvokeMethod>
+                  <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP3" sap:VirtualizedContainerService.HintSize="334,405.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 3" IN_PopupMessage="[&quot;&lt;h1&gt;Add Visit&lt;/h1&gt;&quot;+&#xD;&#xA;&quot;&lt;p&gt;Please verify that the correct visit data has been added.&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Disease:&lt;/strong&gt;&amp;ensp;&quot;+in_strDisease+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Outbreak/Incident Number:&lt;/strong&gt;&amp;ensp;&quot;+listIncidentsFiltered.Last+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;JRF Raised Date:&lt;/strong&gt;&amp;ensp;&quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;JRF Raised By:&lt;/strong&gt;&amp;ensp;Tracings (SSC)&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Date Visit Due:&lt;/strong&gt;&amp;ensp;&quot;+in_strDateVisitDue+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Visit Types:&lt;/strong&gt;&amp;ensp;Clinical Inspection/Examination, Sampling Epidemiology Blood, Visit Tracings&quot;+If(g_Config(&quot;FormType&quot;).ToString=&quot;Zonal&quot;,&quot; Zonal Move&quot;,&quot;&quot;)+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Contact Date:&lt;/strong&gt;&amp;ensp;&quot;+in_strContactDate+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Contact Case:&lt;/strong&gt;&amp;ensp;&quot;+in_strContactCase+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Tracing Type:&lt;/strong&gt;&amp;ensp;&quot;+in_strTracingType+&quot;&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Contact Type:&lt;/strong&gt;&amp;ensp;Animal (Ind reg)&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;Instructions:&lt;/strong&gt;&lt;br&gt;&quot;+in_strInstructions+&quot;&lt;/p&gt;&quot;+&#xD;&#xA;&quot;&lt;p&gt;If these details have been entered correctly, please click 'Continue'. Otherwise, please click 'Stop' and complete this registration manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 3" IN_WidthHeight="[{500,350}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </d:Generic_PopUp>
+                  <InvokeMethod DisplayName="Start timer - PP3" sap:VirtualizedContainerService.HintSize="334,136.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
+                    </InvokeMethod.TargetObject>
+                  </InvokeMethod>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13" />
+              </If.Else>
+            </If>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Visit'" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="484, 2086, 298, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add New Visit'" FullSelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add New Visit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add New Visit' class='bg-defra-lime-green-200 text-defra-lime-green-950 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='Add New Visit             ' check:text='Add New Visit' /&gt;" Guid="cdba1abf-7c9c-46eb-bab1-8f69c98e81f8" InformativeScreenshot="98b5f4533f74425bdc18863b7e9c014b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" Title="Welcome to NDOMS" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
