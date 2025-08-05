@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process_Transaction_2" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1410,1516.4" sap2010:WorkflowViewState.IdRef="Process_Transaction_2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="clr-namespace:DRACOE_PopUps_64;assembly=DRACOE.PopUps.64" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process_Transaction_2" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1410,1516.4" sap2010:WorkflowViewState.IdRef="Process_Transaction_2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="clr-namespace:DRACOE_PopUps_64;assembly=DRACOE.PopUps.64" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -89,7 +89,16 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="634,1451.2" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="634,1451.2" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictFormDetails">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="new Dictionary(of String, String)" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="strDateVisitDue" />
+      <Variable x:TypeArguments="x:String" Name="strContactDate" />
+    </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -101,23 +110,28 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID4</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
     </Flowchart.StartNode>
-    <FlowDecision Condition="[not(CBool(g_Config(&quot;Unattended&quot;))) AND CBool(g_Config(&quot;PausePoint1&quot;))]" DisplayName="Pause point" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+    <FlowDecision x:Name="__ReferenceID3" DisplayName="Pause point 1?" sap:VirtualizedContainerService.HintSize="82.8,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+      <FlowDecision.Condition>
+        <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(g_Config(&quot;PausePoint1&quot;))" />
+      </FlowDecision.Condition>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <av:Point x:Key="ShapeLocation">255,426.4</av:Point>
-          <av:Size x:Key="ShapeSize">70,87.2</av:Size>
-          <av:PointCollection x:Key="TrueConnector">255,470 230,470 230,538.2 290,538.2 290,568.2</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">255,396.4</av:Point>
+          <av:Size x:Key="ShapeSize">82.8,87.2</av:Size>
+          <av:PointCollection x:Key="TrueConnector">255,440 230,440 230,488.20000000000005</av:PointCollection>
+          <av:PointCollection x:Key="FalseConnector">337.8,440 360,440 360,601.8000000000001 300,601.8000000000001 300,631.8000000000001</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <FlowDecision.True>
-        <FlowStep x:Name="__ReferenceID0">
+        <FlowStep x:Name="__ReferenceID2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">190,568.2</av:Point>
+              <av:Point x:Key="ShapeLocation">130,488.20000000000005</av:Point>
               <av:Size x:Key="ShapeSize">200,83.6</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">230,571.8000000000001 230,601.8000000000001 300,601.8000000000001 300,631.8000000000001</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Sequence DisplayName="Pause Point 1" sap:VirtualizedContainerService.HintSize="200,83.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -144,13 +158,118 @@
               </InvokeMethod.TargetObject>
             </InvokeMethod>
           </Sequence>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,631.8000000000001</av:Point>
+                  <av:Size x:Key="ShapeSize">200,53.2</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">300,685.0000000000001 300,705.0000000000001</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search CPH - Invoke Workflow File (Process\Process Subflows\Search CPH.xaml)" sap:VirtualizedContainerService.HintSize="334,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\Search CPH.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strCPH">[dictFormDetails("CPH")]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <FlowStep.Next>
+                <FlowDecision x:Name="__ReferenceID8" DisplayName="Pause point 2?" sap:VirtualizedContainerService.HintSize="82.8,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                  <FlowDecision.Condition>
+                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(g_Config(&quot;PausePoint2&quot;))" />
+                  </FlowDecision.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">258.6,705.0000000000001</av:Point>
+                      <av:Size x:Key="ShapeSize">82.8,87.2</av:Size>
+                      <av:PointCollection x:Key="TrueConnector">258.6,748.6000000000001 230,748.6000000000001 230,798.2</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">341.40000000000003,748.6000000000001 360,748.6000000000001 360,911.8000000000001 300,911.8000000000001 300,941.8000000000001</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">130,798.2</av:Point>
+                          <av:Size x:Key="ShapeSize">200,83.6</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">230,881.8000000000001 230,911.8000000000001 300,911.8000000000001 300,941.8000000000001</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Pause Point 2" sap:VirtualizedContainerService.HintSize="200,83.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <InvokeMethod DisplayName="Stop timer - PP2" sap:VirtualizedContainerService.HintSize="388,136.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_7" MethodName="Stop">
+                          <InvokeMethod.TargetObject>
+                            <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
+                          </InvokeMethod.TargetObject>
+                        </InvokeMethod>
+                        <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP2" sap:VirtualizedContainerService.HintSize="388,405.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 2" IN_PopupMessage="[&quot;&lt;h1&gt;CPH record&lt;/h1&gt;&quot;+&#xD;&#xA;&quot;&lt;p&gt;Please confirm that the correct CPH record has been entered.&lt;br&gt;&quot;+&#xD;&#xA;&quot;&lt;strong&gt;CPH:&lt;/strong&gt;&amp;ensp;&quot;+dictFormDetails(&quot;CPH&quot;)]" IN_PopupTitle="Pause Point 2" IN_WidthHeight="[{500,350}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_3">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </d:Generic_PopUp>
+                        <InvokeMethod DisplayName="Start timer - PP1" sap:VirtualizedContainerService.HintSize="388,136.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_8" MethodName="Start">
+                          <InvokeMethod.TargetObject>
+                            <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
+                          </InvokeMethod.TargetObject>
+                        </InvokeMethod>
+                      </Sequence>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID0">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">200,941.8000000000001</av:Point>
+                              <av:Size x:Key="ShapeSize">200,53.2</av:Size>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add Visit NDOMS - Invoke Workflow File (Process\Process Subflows\Add Visit NDOMS.xaml)" sap:VirtualizedContainerService.HintSize="200,53.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\Process Subflows\Add Visit NDOMS.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strCPH">[dictFormDetails("CPH")]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strDisease">Bluetongue</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strIncidentNumber">[dictFormDetails("IncidentNumber")]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strDateVisitDue">[strDateVisitDue]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strInstructions">[dictFormDetails("Instructions")]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strContactDate">[strContactDate]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strContactCase">[dictFormDetails("ContactCase")]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strTracingType">[dictFormDetails("TracingType")]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <x:Reference>__ReferenceID0</x:Reference>
+                  </FlowDecision.False>
+                </FlowDecision>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
         </FlowStep>
       </FlowDecision.True>
+      <FlowDecision.False>
+        <x:Reference>__ReferenceID1</x:Reference>
+      </FlowDecision.False>
     </FlowDecision>
-    <x:Reference>__ReferenceID0</x:Reference>
-    <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID4" DisplayName="Form type" Expression="[g_Config(&quot;FormType&quot;).ToString]" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+    <x:Reference>__ReferenceID2</x:Reference>
+    <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID9" DisplayName="Form type" Expression="[g_Config(&quot;FormType&quot;).ToString]" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
       <FlowSwitch.Default>
-        <FlowStep x:Name="__ReferenceID1">
+        <FlowStep x:Name="__ReferenceID4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">55,159.9</av:Point>
@@ -163,6 +282,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <Throw DisplayName="Throw BRE - unrecognised form type" Exception="[new BusinessRuleException(&quot;The document is not recognised as a Zonal (.xlsx) or Confirmed Case (.docx) document. Please verify that this document is suitable for processing with the robot.&quot;)]" sap:VirtualizedContainerService.HintSize="388,91.2" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </Sequence>
         </FlowStep>
       </FlowSwitch.Default>
@@ -175,11 +295,12 @@
           <av:PointCollection x:Key="Confirmed CasesConnector">335,119.5 430,119.5 430,258.6</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <FlowStep x:Key="Confirmed Cases" x:Name="__ReferenceID3">
+      <FlowStep x:Key="Confirmed Cases" x:Name="__ReferenceID6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">330,258.6</av:Point>
             <av:Size x:Key="ShapeSize">200,83.6</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">430,342.20000000000005 430,372.20000000000005 317.1,372.20000000000005 317.1,396.4</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <Sequence DisplayName="Confirmed Cases" sap:VirtualizedContainerService.HintSize="200,83.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -189,12 +310,16 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </Sequence>
+        <FlowStep.Next>
+          <x:Reference>__ReferenceID3</x:Reference>
+        </FlowStep.Next>
       </FlowStep>
-      <FlowStep x:Key="Zonal" x:Name="__ReferenceID2">
+      <FlowStep x:Key="Zonal" x:Name="__ReferenceID5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">55,259.9</av:Point>
             <av:Size x:Key="ShapeSize">200,83.6</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">155,343.5 155,373.5 275.7,373.5 275.7,396.4</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <Sequence DisplayName="Zonal" sap:VirtualizedContainerService.HintSize="200,83.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -204,10 +329,17 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </Sequence>
+        <FlowStep.Next>
+          <x:Reference>__ReferenceID3</x:Reference>
+        </FlowStep.Next>
       </FlowStep>
     </FlowSwitch>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <x:Reference>__ReferenceID2</x:Reference>
-    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID0</x:Reference>
   </Flowchart>
 </Activity>

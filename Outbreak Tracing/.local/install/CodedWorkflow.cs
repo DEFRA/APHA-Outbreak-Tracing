@@ -13,6 +13,10 @@ using UiPath.Testing.Enums;
 using UiPath.UIAutomationNext.API.Contracts;
 using UiPath.UIAutomationNext.API.Models;
 using UiPath.UIAutomationNext.Enums;
+using UiPath.Word;
+using UiPath.Word.Activities;
+using UiPath.Word.Activities.API;
+using UiPath.Word.Activities.API.Models;
 using UiPath.CodedWorkflows.DescriptorIntegration;
 
 namespace OutbreakTracing
@@ -21,7 +25,7 @@ namespace OutbreakTracing
     {
         public CodedWorkflow()
         {
-            _ = new System.Type[]{typeof(UiPath.Mail.Activities.Api.IMailService), typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Core.Activities.API.ISystemService), typeof(UiPath.Testing.API.ITestingService)};
+            _ = new System.Type[]{typeof(UiPath.Word.Activities.API.IWordService), typeof(UiPath.Mail.Activities.Api.IMailService), typeof(UiPath.Core.Activities.API.ISystemService), typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Testing.API.ITestingService)};
         }
 
         protected UiPath.Mail.Activities.Api.IMailService mail { get => serviceContainer.Resolve<UiPath.Mail.Activities.Api.IMailService>(); }
@@ -31,6 +35,8 @@ namespace OutbreakTracing
         protected UiPath.Testing.API.ITestingService testing { get => serviceContainer.Resolve<UiPath.Testing.API.ITestingService>(); }
 
         protected UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService uiAutomation { get => serviceContainer.Resolve<UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService>(); }
+
+        protected UiPath.Word.Activities.API.IWordService word { get => serviceContainer.Resolve<UiPath.Word.Activities.API.IWordService>(); }
     }
 }
 

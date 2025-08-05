@@ -50,6 +50,85 @@
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
+    },
+    {
+      "Path": "Sequence.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&Sequence_2",
+        "g_Config&Sequence_2",
+        "g_swProcessingTimer&Sequence_2",
+        "g_TransactionItem&Sequence_2",
+        "g_intExitPoint&Sequence_2",
+        "listIncidents&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Add Visit NDOMS.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&Sequence_6",
+        "g_Config&Sequence_6",
+        "g_swProcessingTimer&Sequence_6",
+        "g_TransactionItem&Sequence_6",
+        "g_intExitPoint&Sequence_6",
+        "listIncidentsFiltered&Sequence_2",
+        "dtVisits&Sequence_2",
+        "listIncidents&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strTracingType",
+        "in_strContactCase",
+        "in_strContactDate",
+        "in_strInstructions",
+        "in_strDateVisitDue",
+        "in_strCPH",
+        "in_strDisease",
+        "in_strIncidentNumber"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Transaction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&Sequence_6",
+        "g_Config&Sequence_6",
+        "g_swProcessingTimer&Sequence_6",
+        "g_TransactionItem&Sequence_6",
+        "g_intExitPoint&Sequence_6",
+        "dictFormDetails&Flowchart_1",
+        "strDateVisitDue&Flowchart_1",
+        "strContactDate&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Read TRF.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContactCase&Sequence_1",
+        "strTracingType&Sequence_1",
+        "strDateVisitDue&Sequence_1",
+        "strTRFText&Sequence_1",
+        "g_arrCaseID&Sequence_6",
+        "g_Config&Sequence_6",
+        "g_swProcessingTimer&Sequence_6",
+        "g_TransactionItem&Sequence_6",
+        "g_intExitPoint&Sequence_6"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dictFormValues",
+        "in_strTRFPath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
     }
   ]
 }
