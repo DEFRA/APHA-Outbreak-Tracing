@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Sequence" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1410,1100.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1410,1279.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -36,6 +44,15 @@
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Security</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+      <x:String>UiPath.Sdk.Activities</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>Microsoft.Office.Interop.Word</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -104,56 +121,93 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Word</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="643.6,1035.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="648,1214" sap2010:WorkflowViewState.IdRef="Sequence_12">
     <Sequence.Variables>
-      <Variable x:TypeArguments="scg:List(x:String)" Name="listIncidents" />
+      <Variable x:TypeArguments="s:Boolean[]" Name="arrChecks">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="s:Boolean[]" ExpressionText="{}{False,False,False,False,False,False}" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dictData" />
+      <Variable x:TypeArguments="x:Int32" Name="intPriorityChecks" />
+      <Variable x:TypeArguments="x:String" Name="strPriority" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Add Visit Details for Premises ID 152" sap:VirtualizedContainerService.HintSize="581.6,924.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="2f2b1a8d-d943-4ffe-837c-0787ae7cdcf9" Version="V2">
-      <uix:NApplicationCard.Body>
-        <ActivityAction x:TypeArguments="x:Object">
+    <Assign sap:VirtualizedContainerService.HintSize="586,82.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[dictData]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(of String,Object)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim App As Application = New Application()&#xD;&#xA;Dim oDoc As Document = App.Documents.Open(strFilePath, ReadOnly:=True)&#xD;&#xA;Dim FieldNum As Integer = 1&#xD;&#xA;&#xD;&#xA;App.Visible = False&#xD;&#xA;&#x9;&#xD;&#xA;oDoc.Activate()&#xD;&#xA;&#xD;&#xA;For Each x As FormField In oDoc.FormFields()&#xD;&#xA;&#x9;If x.Type = 71 Then&#xD;&#xA;&#x9;&#x9;Dic_Data(&quot;CheckBox&quot;+FieldNum.ToString) = x.Result&#xD;&#xA;&#x9;&#x9;FieldNum = FieldNum+1&#xD;&#xA;&#x9;End If&#xD;&#xA;Next&#xD;&#xA;&#x9;&#xD;&#xA;oDoc.Close()&#xD;&#xA;app.Quit()" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="586,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:Object" x:Key="strFilePath">
+          <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;C:\Users\rm000121\OneDrive - Defra\UiPath\APHA-Outbreak-Tracing\Outbreak Tracing\Test Data\TRFs\BTD2025.75 TRF01 (visit) Clattercote Priory Farm.docx&quot;" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="Dic_Data">
+          <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictData" />
+        </InOutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intPriorityChecks]" DisplayName="For Each currentPriority" sap:VirtualizedContainerService.HintSize="586,644.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[{&quot;High&quot;,&quot;Medium&quot;,&quot;Low&quot;}]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            <DelegateInArgument x:TypeArguments="x:String" Name="currentPriority" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="547.6,706.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,507.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:BlockUserInput TimeoutMS="{x:Null}" BlockType="All" DisplayName="Block User Input" sap:VirtualizedContainerService.HintSize="485.6,595.2" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="Alt" SpecialKey="True">
-              <ui:BlockUserInput.Body>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,467.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <If Condition="[CInt(dictData(&quot;CheckBox&quot;+(intPriorityChecks+1).ToString)) = 1]" sap:VirtualizedContainerService.HintSize="510,418.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,235.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Click - clinical inspection/examination" sap:VirtualizedContainerService.HintSize="388,158" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2f2b1a8d-d943-4ffe-837c-0787ae7cdcf9" Version="V3">
-                    <uix:NClick.Target>
-                      <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1089, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Clinical Inspection/Exa…'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' type='' class='' check:innerText='Clinical Inspection/Examination' /&gt;" Guid="5fde11ff-0fb9-4c8f-9078-41c99c50d7a5" InformativeScreenshot="ddd547164f2467125135e8f4906cf9cc.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
-                    </uix:NClick.Target>
-                  </uix:NClick>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Click - sampling epidemiology blood" sap:VirtualizedContainerService.HintSize="388,158" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="2f2b1a8d-d943-4ffe-837c-0787ae7cdcf9" Version="V3">
-                    <uix:NClick.Target>
-                      <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 975, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Sampling Epidemiology'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Sampling Epidemiology Blood' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Sampling Epidemiology Blood' tag='OPTION' type='' class='' check:innerText='Sampling Epidemiology Blood' /&gt;" Guid="4221131f-5d7b-40d4-a966-bf476780c8dc" InformativeScreenshot="1ad1d51ad557f7436b0c98dc34442195.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
-                    </uix:NClick.Target>
-                  </uix:NClick>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[strPriority]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[currentPriority]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:Break sap:VirtualizedContainerService.HintSize="434,24.8" sap2010:WorkflowViewState.IdRef="Break_1" />
                 </Sequence>
-              </ui:BlockUserInput.Body>
-            </ui:BlockUserInput>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14" />
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
-      </uix:NApplicationCard.Body>
-      <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-16, -16, 3872, 2312" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAJOgAACToAYJjBRwAAAX+SURBVFhHrZcJUFVlFMefu2hBai7puEDTZAWYuWSTTSUqamrkiAih8h76WB+bjJGFaYKCS5bToFlgwQjmggqCWs00Zc2IDaMjmoKiAgpli5U5Vvru6f///J5d0GZ8yJn5zb33u/d853znnG+5lpbSbnykCw/Q2fT8CKgG0/Vze9AbqG/aTHTnHcE7IAt0123DwS/App+fAt+AAD63mejO24FU8AdYZwmwxVrGRey1jLP+g+sxXOlcOagDvkBr34OwE00PwPBz5MUwLh5T450DrRnymGO98+Go1YbXjFTBO2kXYDuIa1/AdDwIOgHdo5tCReAJdoNtIAU0+dizjZDcQ8740vNG0r6LRmJ5gzG3sMrwTc1zdpoc64SDhfhuJTgKngO6RzeFioC5jwa16BijXeWMKj5tpBxoEhiXxPILElvaIEn7G8W285z4pxU6OwTaDXx/BXwEBgDdYyuEyqqDANsSj2kOmZ1X4XQZT4bRqN11MjO/WuLghKPsggTlnTD6zs0U1MR30OvVauPaMAuP08obhVYyOHKFJJTVG7ZPT8iItFyxbT2OCFyU6D316poIp2YX1opfWhHr4RLgbOgP3J+WVAA0/jloxIiu+SbnOJP3N0lE4THxDEqWUYs/vhkJwCsJK6qVp5eXGx0m2p3Q+xGcBVOB7vkuhQqgKwgHSxGBBv+UDXCgURmicR/7KokvrVN14Nhbf8uBMRn7DNTBdejlggTgDXTPbgoVgaflxYgKv5QNKu8kdnetMBW8n7i6VIalfgBnzpsduIYpOQ26AwGnsO7RDdHGiQ8iUAUHDBpMQLHZUXzMeVzJORkwb5kMiVyJKNSZHbgBvZOgHkxhP24JFQA9XwpOoQau+6dsvKFGX1KvK/+ChG4+LF2nxMoLmTslGbPD5ACn4iGQBFhLuue7FCoAL7AJ5CICda4a4Mjj996c+3MKjsgTSe+rGcF3Jgf+QgrUyInb4lIEXFK9zDXgqnjek4SyBrHvqpMYTMcWDkxslXGKNs51gOu5LyJw1FyErHz7zhqJKq5R92FFZyRi+9nmDoy3zYHuQ+Ce14Em1MDfSIGqgeji0zIyLU96Bi+SXrNekzHpBRK9q1YtRi1q4Cdwz+tAGHgLEahnDTD0o7EGdAyMlj4Ra6X33FXqfuyyrUhLsxrgOsC9wAHuuA6wDTDKasds9o1uYP4HgcGsATggMZj/vUMXw3C2jM6ukNFZh6RH6HI1FeNKblsHeFJ6FDwAdM//CdvASJAHmCr9BqJfch2vACeRgsv+Czc6Y/eclX6vpkvPsAwZueJbGZF5ULxmLZFBtgy1Kpoc4DrA4xqX41Cge74pfNYwQlwrmkdJv2TxzABFcOCKn9oLGuX5zB3SaVK0eAany/0z35DOk2PUasgUhGw5Y94LvgDzQbN1gPeafuBrUAaYbv2FSdgIuqEGDngvyOKUMxwY6fjsPTJk/kph26S1Zdwl1Zb8yic1MmzxNu6GvwKG12yQueZInwEhQBU4mADUN7fJrRcBtjXdpydKeH6lOg8wEtyAaJj3LM7wrbUyZVOV9LdmiyXAehx6Kq+aoYCbE8P9G/gdHAasExaitmgSNgJ6bQXVPAsOjX+XdaBORDScvP+i2hvmYQ2YnndKhr+5w+iI9OD7qyAfDAaPgyOAU3IZYFrHAnVgIXcU/ZILEfN0AOS0nzD/6lDHe0bI5kojEkcw645zElxQI4E5lYbvoi1Gl5ccGL2tFN9mAkZhJtgCvgc8xv+/wZaiP+ZU5JbKw2kXkAUDhgfS0d+aJT5xOcYg+zrxCn5d2k9YQOMc6RDAsHKEo8APwA7u3nhLcSmDdHAJhgowMyqRayeu1SAH7Tw9s6jMxRcEOBXV6FsturM+oApsBozMk+Bn8Dbge+aa/wUv62cSBRqAD59bLbozOvAheFY/c7vmnv+lvmdbT8BU8Z7X7eArcB/bWi1U1vA/QU0bTQxgxbPoXE6QbmAhuAxc/466tzYS3SlHth78CRj+DMCp9hngfF8D6IzWamNhx4BOxIMTgHsAYa3wj8pN4xbLv9xOAcgyHIumAAAAAElFTkSuQmCC" InformativeScreenshot="e1694d856cd114a11f2d094dca0eabca.jpg" Selector="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" Title="Add Visit Details for Premises ID 152" Url="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" />
-      </uix:NApplicationCard.TargetApp>
-    </uix:NApplicationCard>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="586,91.2" sap2010:WorkflowViewState.IdRef="WriteLine_2" />
   </Sequence>
 </Activity>
