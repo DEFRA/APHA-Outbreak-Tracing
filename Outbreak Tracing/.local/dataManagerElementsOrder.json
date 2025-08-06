@@ -55,12 +55,15 @@
       "Path": "Sequence.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "g_arrCaseID&Sequence_2",
-        "g_Config&Sequence_2",
-        "g_swProcessingTimer&Sequence_2",
-        "g_TransactionItem&Sequence_2",
-        "g_intExitPoint&Sequence_2",
-        "listIncidents&Sequence_1"
+        "strPriority&Sequence_12",
+        "intPriorityChecks&Sequence_12",
+        "dictData&Sequence_12",
+        "arrChecks&Sequence_12",
+        "g_arrCaseID&Sequence_9",
+        "g_Config&Sequence_9",
+        "g_swProcessingTimer&Sequence_9",
+        "g_TransactionItem&Sequence_9",
+        "g_intExitPoint&Sequence_9"
       ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
@@ -127,6 +130,49 @@
         "out_dictFormValues",
         "in_strTRFPath"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Read TRF.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intRiskChecks&Sequence_8",
+        "intPriorityChecks&Sequence_8",
+        "dictCheckBoxes&Sequence_8",
+        "g_arrCaseID&Sequence_9",
+        "g_Config&Sequence_9",
+        "g_swProcessingTimer&Sequence_9",
+        "g_TransactionItem&Sequence_9",
+        "g_intExitPoint&Sequence_9",
+        "strTRFText&Sequence_1",
+        "strDateVisitDue&Sequence_1",
+        "strTracingType&Sequence_1",
+        "strContactCase&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strTRFPath",
+        "out_dictFormValues"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Sequence1.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strColNum&Sequence_4",
+        "uiCheckbox&Sequence_4",
+        "boolChecked&Sequence_4",
+        "strPath&Sequence_1",
+        "strTRFText&Sequence_2",
+        "g_arrCaseID&Sequence_9",
+        "g_Config&Sequence_9",
+        "g_swProcessingTimer&Sequence_9",
+        "g_TransactionItem&Sequence_9",
+        "g_intExitPoint&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
