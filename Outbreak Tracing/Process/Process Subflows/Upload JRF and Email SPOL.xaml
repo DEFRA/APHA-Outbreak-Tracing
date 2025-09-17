@@ -1,0 +1,321 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Upload_JRF_and_Email_SPOL" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:d="clr-namespace:DRACOE_PopUps_64;assembly=DRACOE.PopUps.64" xmlns:ds="clr-namespace:DRACOE_Microsoft_Graph_64.SharePoint;assembly=DRACOE Microsoft Graph 64" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Diagnostics;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strUploadPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strJRFPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strEmailPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strTransactionItemPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Upload_JRF_and_Email_SPOL.in_strJRFPath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Upload_JRF_and_Email_SPOL.in_strJRFPath>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Upload_JRF_and_Email_SPOL_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>DRACOE_Microsoft_Graph_64.SharePoint</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>DRACOE_PopUps_64</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>DRACOE Microsoft Graph 64</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>DRACOE.PopUps.64</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Upload_JRF_and_Email_SPOL" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3474.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="521.6,85.2" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="471.6,669.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch DisplayName="Try Catch - create folder" sap:VirtualizedContainerService.HintSize="437.6,609.6" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch.Try>
+              <ds:Create_Folder DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,353.2" sap2010:WorkflowViewState.IdRef="Create_Folder_2" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strConflictBehavior="fail" in_strFolderName="[Regex.Match(in_strUploadPath,&quot;(?&lt;=\/).*?$&quot;).Value]" in_strListID="[g_Config(&quot;LibraryID&quot;).ToString]" in_strParentFolderFilePath="[Regex.Match(in_strUploadPath,&quot;^.*\/&quot;).Value]" in_strSiteID="[g_Config(&quot;UploadSiteID&quot;).ToString]" />
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.6,23.6" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <If Condition="[exception.Message.Contains(&quot;nameAlreadyExists&quot;)]" DisplayName="Folder exists?" sap:VirtualizedContainerService.HintSize="334,183.2" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,226.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message - folder already exists" sap:VirtualizedContainerService.HintSize="382,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Folder '&quot;+in_strUploadPath+&quot;' already exists.&quot;]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Rethrow DisplayName="Rethrow - other create folder exception" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <TryCatch DisplayName="Try Catch - test endpoint" sap:VirtualizedContainerService.HintSize="521.6,2201.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="x:String" Name="strResponse" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dtContents" />
+      </TryCatch.Variables>
+      <TryCatch.Try>
+        <Sequence DisplayName="Test endpoint" sap:VirtualizedContainerService.HintSize="484,1936" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - test endpoint" sap:VirtualizedContainerService.HintSize="450,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Testing if SPOL upload path exists: &quot;+in_strUploadPath]" />
+          <ds:Get_Folder_Contents sap2010:Annotation.AnnotationText="Don't actually care about contents, just checking if the Endpoint exists. Facilitates user deciding whether or not to create a folder." DisplayName="Get Folder Contents" sap:VirtualizedContainerService.HintSize="450,446.4" sap2010:WorkflowViewState.IdRef="Get_Folder_Contents_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strFolderPath="[in_strUploadPath]" in_strListID="[g_Config(&quot;UploadLibraryID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" out_dtContents="[dtContents]" out_strResponse="[strResponse]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ds:Get_Folder_Contents>
+          <ui:LogMessage DisplayName="Log Message - folder exists" sap:VirtualizedContainerService.HintSize="450,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;SPOL path exists.&quot;]" />
+          <If Condition="[CBool(g_Config(&quot;PausePoint8&quot;))]" DisplayName="Pause Point 8?" sap:VirtualizedContainerService.HintSize="450,1078.4" sap2010:WorkflowViewState.IdRef="If_5">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <InvokeMethod DisplayName="Stop Timer - PP8" sap:VirtualizedContainerService.HintSize="382,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Stop">
+                  <InvokeMethod.TargetObject>
+                    <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                  </InvokeMethod.TargetObject>
+                </InvokeMethod>
+                <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP8" sap:VirtualizedContainerService.HintSize="382,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 8." IN_PopupMessage="[&quot;&lt;h1&gt;Upload to existing folder&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;The robot is attempting to upload to the following path:&lt;br&gt;&quot;+&#xA;in_strUploadPath+&quot;&lt;br&gt;&quot;+&#xA;&quot;The following files will be uploaded:&lt;br&gt;&quot;+&#xA;in_strEmailPath+&quot;&lt;br&gt;&quot;+&#xA;in_strJRFPath+&quot;&lt;br&gt;&quot;+&#xA;in_strTransactionItemPath+&quot;&lt;/p&gt;&quot;+&#xA;&quot;If you are happy for the robot to upload these files to this location, please click 'Continue'.&lt;br&gt;&quot;+&#xA;&quot;If you believe this path is incorrect, please click 'Stop' and complete this transaction manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 8" IN_WidthHeight="[{500,500}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_2" />
+                <InvokeMethod DisplayName="Start Timer - PP8" sap:VirtualizedContainerService.HintSize="382,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
+                  <InvokeMethod.TargetObject>
+                    <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                  </InvokeMethod.TargetObject>
+                </InvokeMethod>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="487.6,23.6" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <If Condition="[exception.Message.Contains(&quot;Endpoint does not exist&quot;)]" DisplayName="If endpoint does not exist" sap:VirtualizedContainerService.HintSize="334,183.2" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,1001.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <InvokeMethod DisplayName="Stop Timer - create folder?" sap:VirtualizedContainerService.HintSize="382,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Stop">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                    </InvokeMethod.TargetObject>
+                  </InvokeMethod>
+                  <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Create folder?" sap:VirtualizedContainerService.HintSize="382,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at SPOL folder creation prompt." IN_PopupMessage="[&quot;&lt;h1&gt;Folder does not exist&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;The robot is attempting to upload to the following path:&lt;br&gt;&quot;+&#xA;in_strUploadPath+&quot;&lt;br&gt;&quot;+&#xA;&quot;However, one or more folders in this path do not currently exist.&lt;/p&gt;&quot;+&#xA;&quot;Please carefully inspect this path.&lt;br&gt;&quot;+&#xA;&quot;If you are happy for the robot to create these missing folders and upload to this location, please click 'Continue'.&lt;br&gt;&quot;+&#xA;&quot;If you believe this path is incorrect and/or the correct upload folder already exists, please click 'Stop' and complete this transaction manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Create folder?" IN_WidthHeight="[{500,500}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
+                  <ui:LogMessage DisplayName="Log Message - folder created" sap:VirtualizedContainerService.HintSize="382,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;New folder created&quot;]" />
+                  <InvokeMethod DisplayName="Start Timer - create folder?" sap:VirtualizedContainerService.HintSize="382,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Start">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                    </InvokeMethod.TargetObject>
+                  </InvokeMethod>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Rethrow DisplayName="Rethrow - SPOL upload exception" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Rethrow_3" />
+                </Sequence>
+              </If.Else>
+            </If>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:LogMessage DisplayName="Log Message - upload" sap:VirtualizedContainerService.HintSize="521.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Uploading JRF, sent email and transaction file to &quot;+in_strUploadPath]" />
+    <ds:Upload_Small_File DisplayName="Upload JRF" sap:VirtualizedContainerService.HintSize="521.6,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_1" in_DestinationFilePath="[in_strUploadPath+&quot;/&quot;+Path.GetFileName(in_strJRFPath)]" in_LocalFilePath="[in_strJRFPath]" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strListID="[g_Config(&quot;UploadLibraryID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+    <ds:Upload_Small_File DisplayName="Upload Email" sap:VirtualizedContainerService.HintSize="521.6,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_2" in_DestinationFilePath="[in_strUploadPath+&quot;/&quot;+Path.GetFileName(in_strEmailPath)]" in_LocalFilePath="[in_strEmailPath]" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strListID="[g_Config(&quot;UploadLibraryID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+    <ds:Upload_Small_File DisplayName="Upload TRF/Zonal spreadsheet" sap:VirtualizedContainerService.HintSize="521.6,324" sap2010:WorkflowViewState.IdRef="Upload_Small_File_3" in_DestinationFilePath="[in_strUploadPath+&quot;/&quot;+Path.GetFileName(in_strTransactionItemPath)]" in_LocalFilePath="[in_strTransactionItemPath]" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strListID="[g_Config(&quot;UploadLibraryID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+  </Sequence>
+</Activity>

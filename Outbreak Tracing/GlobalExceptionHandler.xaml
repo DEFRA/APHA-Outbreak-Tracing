@@ -114,6 +114,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
@@ -135,7 +136,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadCsvFile DataTable="[dtRetryableActivities]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\RetryableActivities.csv&quot;]" sap:VirtualizedContainerService.HintSize="510,158.8" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+    <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtRetryableActivities]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" FilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\RetryableActivities.csv&quot;]" sap:VirtualizedContainerService.HintSize="510,158.8" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
     <Assign sap2010:Annotation.AnnotationText="Is activity name included in Retryable Activities?" DisplayName="Filter retryable activities" sap:VirtualizedContainerService.HintSize="510,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[boolRetryable]</OutArgument>

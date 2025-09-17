@@ -1,42 +1,16 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Add_Visit_NDOMS" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:d="clr-namespace:DRACOE_PopUps_64;assembly=DRACOE.PopUps.64" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System.Private.CoreLib" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_strCPH" Type="InArgument(x:String)" />
     <x:Property Name="in_strDisease" Type="InArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="Incident number WITHOUT year e.g. BTV3" Name="in_strIncidentNumber" Type="InArgument(x:String)" />
-    <x:Property Name="in_strDateVisitDue" Type="InArgument(x:String)" />
-    <x:Property Name="in_strInstructions" Type="InArgument(x:String)" />
-    <x:Property Name="in_strContactDate" Type="InArgument(x:String)" />
-    <x:Property Name="in_strContactCase" Type="InArgument(x:String)" />
-    <x:Property Name="in_strTracingType" Type="InArgument(x:String)" />
+    <x:Property Name="io_dictFormDetails" Type="InOutArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_strFormType" Type="InArgument(x:String)" />
   </x:Members>
-  <this:Add_Visit_NDOMS.in_strCPH>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strCPH>
   <this:Add_Visit_NDOMS.in_strDisease>
     <InArgument x:TypeArguments="x:String" />
   </this:Add_Visit_NDOMS.in_strDisease>
-  <this:Add_Visit_NDOMS.in_strIncidentNumber>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strIncidentNumber>
-  <this:Add_Visit_NDOMS.in_strDateVisitDue>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strDateVisitDue>
-  <this:Add_Visit_NDOMS.in_strInstructions>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strInstructions>
-  <this:Add_Visit_NDOMS.in_strContactDate>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strContactDate>
-  <this:Add_Visit_NDOMS.in_strContactCase>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strContactCase>
-  <this:Add_Visit_NDOMS.in_strTracingType>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Add_Visit_NDOMS.in_strTracingType>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410,6816</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>655.6,6776</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence5_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -83,6 +57,9 @@
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>DRACOE_PopUps_64</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -160,22 +137,25 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add Visit NDOMS" sap:VirtualizedContainerService.HintSize="665.6,6750.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add Visit NDOMS" sap:VirtualizedContainerService.HintSize="1451.6000000000001,7405.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - searching NDOMS" sap:VirtualizedContainerService.HintSize="603.6,143.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Searching NDOMS for CPH: '&quot;+in_strCPH+&quot;'&quot;]" />
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Chromium API input mode as default because Simulate is largely incompatible.&#xA;Simulate used where possible as it is faster - activities are annotated accordingly." AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS" sap:VirtualizedContainerService.HintSize="603.6,6456" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[g_Config(&quot;NDOMS_browser&quot;)]" ScopeGuid="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Chromium API input mode as default because Simulate is largely incompatible.&#xA;Simulate used where possible as it is faster - activities are annotated accordingly." AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS" sap:VirtualizedContainerService.HintSize="587.6,7382" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[g_Config(&quot;NDOMS_browser&quot;)]" ScopeGuid="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Navigate to visit details" sap:VirtualizedContainerService.HintSize="569.6,6273.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Navigate to visit details" sap:VirtualizedContainerService.HintSize="553.6,7176" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd1:DataTable" Name="dtVisits" />
               <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(of String)]" Name="listIncidents" />
@@ -186,12 +166,13 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Visit'" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <ui:LogMessage DisplayName="Log Message - add visit" sap:VirtualizedContainerService.HintSize="519.6,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding new visit info for premises.&quot;]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Visit'" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits" DesignTimeRectangle="3413, 931, 353, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add New Visit'" FullSelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Add New Visit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Add New Visit' type='button' class='bg-defra-lime-green-200 text-defra-lime-green-950 inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='                                     Add New Visit                                     ' check:text='Add New Visit' /&gt;" Guid="1941f7c4-3c4e-400a-bba9-74f4dd000e01" InformativeScreenshot="b2574b3e9f3981b23549f2908d0006ee.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Visits for Premises ID*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NSelectItem DisplayName="Select Disease" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[in_strDisease]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NSelectItem DisplayName="Select Disease" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[in_strDisease]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="50">
                   <x:String></x:String>
@@ -250,17 +231,17 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 696, 775, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT diseasetype'" FullSelectorArgument="&lt;webctrl id='diseasetype' tag='SELECT' aaname='Disease' /&gt;" FuzzySelectorArgument="&lt;webctrl id='diseasetype' tag='SELECT' aaname='Disease' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="55636136-2dc9-47e9-9dec-d31266d02dfb" ImageBase64="" InformativeScreenshot="ac24a96fa8de7d749a2517e8c605e026.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NGetAttributeGeneric x:TypeArguments="scg:List(x:String)" Attribute="items" DisplayName="Get selectable incidents" sap:VirtualizedContainerService.HintSize="507.6,209.2" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_1" Result="[listIncidents]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NGetAttributeGeneric x:TypeArguments="scg:List(x:String)" Attribute="items" DisplayName="Get selectable incidents" sap:VirtualizedContainerService.HintSize="519.6,241.2" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_1" Result="[listIncidents]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NGetAttributeGeneric.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1326, 517, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT outbreakincident'" FullSelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' /&gt;" FuzzySelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 sm:text-sm sm:leading-6' /&gt;" Guid="a33f3c7f-eb42-4869-8c84-98ba5a807324" InformativeScreenshot="d32627429c6466750e39db7cd6f1ca81.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NGetAttributeGeneric.Target>
             </uix:NGetAttributeGeneric>
-            <Assign sap2010:Annotation.AnnotationText="Format of incident number + year e.g. &quot;BTV3 2024&quot;" DisplayName="Get relevant incident numbers" sap:VirtualizedContainerService.HintSize="507.6,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap2010:Annotation.AnnotationText="Format of incident number + year e.g. &quot;BTV3 2024&quot;" DisplayName="Get relevant incident numbers" sap:VirtualizedContainerService.HintSize="519.6,146" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
-                <OutArgument x:TypeArguments="scg:List(x:String)">[listIncidents]</OutArgument>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[listIncidentsFiltered]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="scg:List(x:String)">[listIncidents.Where(function(x) Regex.Match(x, "^"+in_strIncidentNumber+" 20[0-9]{2}$").Success).ToList]</InArgument>
+                <InArgument x:TypeArguments="scg:List(x:String)">[listIncidents.Where(function(x) Regex.Match(x, "^"+io_dictFormDetails("IncidentNumber")+" 20[0-9]{2}$").Success or x=io_dictFormDetails("IncidentNumber")).ToList]</InArgument>
               </Assign.Value>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -268,7 +249,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <If Condition="[listIncidents.Count=0]" DisplayName="If no suitable incident numbers returned" sap:VirtualizedContainerService.HintSize="507.6,362.8" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[listIncidentsFiltered.Count=0]" DisplayName="If no suitable incident numbers returned" sap:VirtualizedContainerService.HintSize="519.6,436" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -276,17 +257,17 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,179.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw DisplayName="Throw BRE - no suitable incident number" Exception="[new BusinessRuleException(&quot;No incident numbers of expected format '&quot;+in_strIncidentNumber+&quot; 20xx' returned. The following selectable incident numbers were available: &quot;+Environment.NewLine+String.Join(Environment.NewLine+&quot;, &quot;,listIncidents))]" sap:VirtualizedContainerService.HintSize="334,91.2" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                  <Throw DisplayName="Throw BRE - no suitable incident number" Exception="[new BusinessRuleException(&quot;No incident numbers of expected format '&quot;+io_dictFormDetails(&quot;IncidentNumber&quot;)+&quot; 20xx' returned. The following selectable incident numbers were available: &quot;+Environment.NewLine+String.Join(Environment.NewLine+&quot;, &quot;,listIncidents))]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="300,81.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -295,12 +276,12 @@
                 </Sequence>
               </If.Else>
             </If>
-            <InvokeMethod DisplayName="Sort list alphabetically" sap:VirtualizedContainerService.HintSize="507.6,139.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Sort">
+            <InvokeMethod DisplayName="Sort list alphabetically" sap:VirtualizedContainerService.HintSize="519.6,171.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Sort">
               <InvokeMethod.TargetObject>
                 <InArgument x:TypeArguments="scg:List(x:String)">[listIncidentsFiltered]</InArgument>
               </InvokeMethod.TargetObject>
             </InvokeMethod>
-            <uix:NSelectItem DisplayName="Select Incident Number with latest year" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[listIncidentsFiltered.Last]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NSelectItem DisplayName="Select Incident Number with latest year" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[listIncidentsFiltered.Last]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="5">
                   <x:String></x:String>
@@ -314,12 +295,12 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1326, 517, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT outbreakincident'" FullSelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' /&gt;" FuzzySelectorArgument="&lt;webctrl id='outbreakincident' tag='SELECT' aaname='Outbreak / Incident' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 sm:text-sm sm:leading-6' /&gt;" Guid="12b16083-7ac6-4248-8c0b-4ba8c7372af3" InformativeScreenshot="06dbd9ec01922cfe9b5780221f884c1d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'JRF Raised Date'" sap:VirtualizedContainerService.HintSize="507.6,252" sap2010:WorkflowViewState.IdRef="NInjectJsScript_1" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;jrfraiseddate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'JRF Raised Date'" sap:VirtualizedContainerService.HintSize="519.6,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_1" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;jrfraiseddate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
               <uix:NInjectJsScript.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1531, 375, 80" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT jrfraiseddate'" FullSelectorArgument="&lt;webctrl id='jrfraiseddate' tag='INPUT' aaname='JRF Raised Date' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jrfraiseddate' tag='INPUT' aaname='JRF Raised Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="aa394236-35f6-418e-adc2-1e9ee6c177ca" InformativeScreenshot="3fcde58bfbd7b968a383222c2fe8a1d3.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <uix:NSelectItem DisplayName="Select JRF Raised By" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Tracings (SSC)" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NSelectItem DisplayName="Select JRF Raised By" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Tracings (SSC)" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="11">
                   <x:String>Allocations</x:String>
@@ -339,35 +320,65 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="786, 1531, 439, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT jrfraisedby'" FullSelectorArgument="&lt;webctrl id='jrfraisedby' tag='SELECT' aaname='JRF Raised By' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jrfraisedby' tag='SELECT' aaname='JRF Raised By' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="d40bdb81-6b93-49c9-9d83-715060a1033f" InformativeScreenshot="db877d6faac407acbea495dfbe70572b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Date Visit Due'" sap:VirtualizedContainerService.HintSize="507.6,252" sap2010:WorkflowViewState.IdRef="NInjectJsScript_2" InputParameter="[in_strDateVisitDue]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;visitduedate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Date Visit Due'" sap:VirtualizedContainerService.HintSize="519.6,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_2" InputParameter="[Date.ParseExact(io_dictFormDetails(&quot;DateVisitDue&quot;),&quot;dd/MM/yyyy&quot;,CultureInfo.CurrentCulture).ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;visitduedate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
               <uix:NInjectJsScript.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1766, 375, 80" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT visitduedate'" FullSelectorArgument="&lt;webctrl id='visitduedate' tag='INPUT' aaname='Date Visit Due' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visitduedate' tag='INPUT' aaname='Date Visit Due' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="d17e85c7-349d-42ed-a892-078601f0755d" InformativeScreenshot="340df3dc77d407c9c57881636acd248e.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Instructions" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="507.6,220.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Text="[in_strInstructions]" Version="V3">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1046, 3475, 230" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'TEXTAREA instructions'" FullSelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' /&gt;" FuzzySelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' type='text' class='border-0 text-defra-warm-grey-900 block w-full rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="b7f9d41a-298d-434c-b176-ea414eda786f" InformativeScreenshot="eeea13b58ea90a6f7c1352e612e75c94.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
-              </uix:NTypeInto.Target>
-            </uix:NTypeInto>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - clinical inspection/examination" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1089, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Clinical Inspection/Exa…'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' type='' class='' check:innerText='Clinical Inspection/Examination' /&gt;" Guid="5fde11ff-0fb9-4c8f-9078-41c99c50d7a5" InformativeScreenshot="ddd547164f2467125135e8f4906cf9cc.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
-              </uix:NClick.Target>
-            </uix:NClick>
-            <ui:BlockUserInput TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Prevent users interrupting the hardware clicks necessary at this stage." BlockType="All" DisplayName="Block User Input - select additional visit types" sap:VirtualizedContainerService.HintSize="507.6,1184.4" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="Alt" SpecialKey="True">
-              <ui:BlockUserInput.Body>
-                <Sequence DisplayName="Select additional visit types" sap:VirtualizedContainerService.HintSize="472,985.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <If Condition="[in_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal - format instructions" sap:VirtualizedContainerService.HintSize="519.6,361.6" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - sampling epidemiology blood" sap:VirtualizedContainerService.HintSize="410,158" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                  <Assign DisplayName="Format address into instructions" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("Instructions")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[String.Format(io_dictFormDetails("Instructions"),io_dictFormDetails("Address"))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Instructions" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="519.6,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Text="[io_dictFormDetails(&quot;Instructions&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1046, 3475, 230" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'TEXTAREA instructions'" FullSelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' /&gt;" FuzzySelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' type='text' class='border-0 text-defra-warm-grey-900 block w-full rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="b7f9d41a-298d-434c-b176-ea414eda786f" InformativeScreenshot="eeea13b58ea90a6f7c1352e612e75c94.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - clinical inspection/examination" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1089, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Clinical Inspection/Exa…'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Clinical Inspection/Examination' tag='OPTION' type='' class='' check:innerText='Clinical Inspection/Examination' /&gt;" Guid="5fde11ff-0fb9-4c8f-9078-41c99c50d7a5" InformativeScreenshot="ddd547164f2467125135e8f4906cf9cc.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:LogMessage DisplayName="Log Message - block user input" sap:VirtualizedContainerService.HintSize="519.6,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Blocking user input temporarily for visit type selection&quot;]" />
+            <ui:BlockUserInput TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Prevent users interrupting the hardware clicks necessary at this stage." BlockType="All" DisplayName="Block User Input - select additional visit types" sap:VirtualizedContainerService.HintSize="519.6,1086" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="Alt" SpecialKey="True">
+              <ui:BlockUserInput.Body>
+                <Sequence DisplayName="Select additional visit types" sap:VirtualizedContainerService.HintSize="484,894.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - sampling epidemiology blood" sap:VirtualizedContainerService.HintSize="450,190" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 975, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Sampling Epidemiology'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Sampling Epidemiology Blood' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Sampling Epidemiology Blood' tag='OPTION' type='' class='' check:innerText='Sampling Epidemiology Blood' /&gt;" Guid="4221131f-5d7b-40d4-a966-bf476780c8dc" InformativeScreenshot="1ad1d51ad557f7436b0c98dc34442195.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <If Condition="[g_Config(&quot;FormType&quot;).ToString=&quot;Zonal&quot;]" DisplayName="Zonal or Confirmed Cases?" sap:VirtualizedContainerService.HintSize="410,676" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If Condition="[in_strFormType=&quot;Zonal&quot;]" DisplayName="Zonal or Confirmed Cases?" sap:VirtualizedContainerService.HintSize="450,644.8" sap2010:WorkflowViewState.IdRef="If_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -375,13 +386,13 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="376,246.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,241.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - visit tracings zonal move" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - visit tracings zonal move" sap:VirtualizedContainerService.HintSize="382,181.2" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1109, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Visit Tracings'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings Zonal Move' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings Zonal Move' tag='OPTION' type='' class='' check:innerText='Visit Tracings Zonal Move' /&gt;" Guid="d0dd9866-34a7-4d24-880a-f34fbe5fd038" InformativeScreenshot="f43e7607385d6f87eca64fffa84a9061.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                           </uix:NClick.Target>
@@ -389,13 +400,13 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="376,246.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,241.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - visit tracings" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Ctrl + Hardware Click - visit tracings" sap:VirtualizedContainerService.HintSize="382,181.2" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="HardwareEvents" KeyModifiers="Ctrl" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="296, 1065, 875, 45" DesignTimeScaleFactor="2.5" FriendlyName="'Visit Tracings'" FullSelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings' tag='OPTION' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visittypecodes' tag='SELECT' /&gt;&lt;webctrl aaname='Visit Tracings' tag='OPTION' type='' class='' check:innerText='Visit Tracings' /&gt;" Guid="ce9af9cb-9a1e-4b3a-9587-e327fd5501e4" InformativeScreenshot="bb3638d267a7798b3730a655d081481a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID 152' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                           </uix:NClick.Target>
@@ -413,12 +424,34 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:BlockUserInput>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Contact Date'" sap:VirtualizedContainerService.HintSize="507.6,252" sap2010:WorkflowViewState.IdRef="NInjectJsScript_3" InputParameter="[in_strContactDate]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;contactdate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
-              <uix:NInjectJsScript.Target>
-                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="1186, 1724, 375, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT contactdate'" FullSelectorArgument="&lt;webctrl id='contactdate' tag='INPUT' aaname='Contact Date' /&gt;" FuzzySelectorArgument="&lt;webctrl id='contactdate' tag='INPUT' aaname='Contact Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="6c0e0dc7-5251-428a-860c-b2429b4bffa9" InformativeScreenshot="fb0f33a41ff54eab30c89425afd7e052.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
-              </uix:NInjectJsScript.Target>
-            </uix:NInjectJsScript>
-            <uix:NSelectItem DisplayName="Select Contact Case" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[in_strContactCase]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <ui:LogMessage DisplayName="Log Message - info" sap:VirtualizedContainerService.HintSize="519.6,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;User input unblocked.&quot;]" />
+            <If Condition="[io_dictFormDetails(&quot;ContactDate&quot;) &lt;&gt; &quot;&quot;]" DisplayName="If contact date present" sap:VirtualizedContainerService.HintSize="519.6,531.2" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,335.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Contact Date'" sap:VirtualizedContainerService.HintSize="382,275.2" sap2010:WorkflowViewState.IdRef="NInjectJsScript_3" InputParameter="[Date.ParseExact(io_dictFormDetails(&quot;ContactDate&quot;),&quot;dd/MM/yyyy&quot;,CultureInfo.CurrentCulture).ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;contactdate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+                    <uix:NInjectJsScript.Target>
+                      <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="1186, 1724, 375, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT contactdate'" FullSelectorArgument="&lt;webctrl id='contactdate' tag='INPUT' aaname='Contact Date' /&gt;" FuzzySelectorArgument="&lt;webctrl id='contactdate' tag='INPUT' aaname='Contact Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="6c0e0dc7-5251-428a-860c-b2429b4bffa9" InformativeScreenshot="fb0f33a41ff54eab30c89425afd7e052.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NInjectJsScript.Target>
+                  </uix:NInjectJsScript>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <uix:NSelectItem DisplayName="Select Contact Case" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[io_dictFormDetails(&quot;ContactCase&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="1">
                   <x:String></x:String>
@@ -428,7 +461,7 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="2080, 1112, 130, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT eventid'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Contact Case (* cases)' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Contact Case (* cases)' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block truncate rounded-md py-1.5 shadow-sm ring-inset focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:max-w-xs sm:text-sm sm:leading-6' /&gt;" Guid="66c683a7-86d7-4c17-bcf8-84a124168c19" InformativeScreenshot="da664e39e8e2279230d49a8d3b740e79.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NSelectItem DisplayName="Select Tracing Type" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="[in_strTracingType]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NSelectItem DisplayName="Select Tracing Type" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="[io_dictFormDetails(&quot;TracingType&quot;)]" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="5">
                   <x:String></x:String>
@@ -442,7 +475,7 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 758, 492, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT tracetypes'" FullSelectorArgument="&lt;webctrl id='tracetypes' tag='SELECT' aaname='Tracing Type' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tracetypes' tag='SELECT' aaname='Tracing Type' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block truncate rounded-md py-1.5 shadow-sm ring-inset focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:max-w-xs sm:text-sm sm:leading-6' /&gt;" Guid="c0278c22-b4c9-4e06-867c-ba75eb0fc81d" InformativeScreenshot="427e670b125d2a063f19f20faba1092a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NSelectItem DisplayName="Select Contact Type" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="Animal (Ind reg)" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NSelectItem DisplayName="Select Contact Type" sap:VirtualizedContainerService.HintSize="519.6,190" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="Animal (Ind reg)" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="9">
                   <x:String></x:String>
@@ -460,27 +493,27 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="1186, 758, 394, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT dangerouscontact…'" FullSelectorArgument="&lt;webctrl id='dangerouscontacttypes' tag='SELECT' aaname='Contact Type' /&gt;" FuzzySelectorArgument="&lt;webctrl id='dangerouscontacttypes' tag='SELECT' aaname='Contact Type' type='' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block truncate rounded-md py-1.5 shadow-sm ring-inset focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:max-w-xs sm:text-sm sm:leading-6' /&gt;" Guid="5902b3ab-a052-427c-98c1-1f94e482bc51" InformativeScreenshot="1c84432348988eb6915968f304ddca58.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <If Condition="[CBool(g_Config(&quot;boolPausePoint3&quot;))]" DisplayName="Pause Point 3?" sap:VirtualizedContainerService.HintSize="507.6,1030" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[CBool(g_Config(&quot;PausePoint3&quot;))]" DisplayName="Pause Point 3?" sap:VirtualizedContainerService.HintSize="519.6,1087.2" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,846.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <InvokeMethod DisplayName="Stop timer - PP3" sap:VirtualizedContainerService.HintSize="334,136.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Stop">
+                  <InvokeMethod DisplayName="Stop timer - PP3" sap:VirtualizedContainerService.HintSize="382,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Stop">
                     <InvokeMethod.TargetObject>
                       <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
                     </InvokeMethod.TargetObject>
                   </InvokeMethod>
-                  <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP3" sap:VirtualizedContainerService.HintSize="334,405.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 3" IN_PopupMessage="[&quot;&lt;h1&gt;Add Visit&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;Please verify that the correct visit data has been added.&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Disease:&lt;/strong&gt;&amp;ensp;&quot;+in_strDisease+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Outbreak/Incident Number:&lt;/strong&gt;&amp;ensp;&quot;+listIncidentsFiltered.Last+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Raised Date:&lt;/strong&gt;&amp;ensp;&quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Raised By:&lt;/strong&gt;&amp;ensp;Tracings (SSC)&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Date Visit Due:&lt;/strong&gt;&amp;ensp;&quot;+in_strDateVisitDue+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Visit Types:&lt;/strong&gt;&amp;ensp;Clinical Inspection/Examination, Sampling Epidemiology Blood, Visit Tracings&quot;+If(g_Config(&quot;FormType&quot;).ToString=&quot;Zonal&quot;,&quot; Zonal Move&quot;,&quot;&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Contact Date:&lt;/strong&gt;&amp;ensp;&quot;+in_strContactDate+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Contact Case:&lt;/strong&gt;&amp;ensp;&quot;+in_strContactCase+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Tracing Type:&lt;/strong&gt;&amp;ensp;&quot;+in_strTracingType+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Contact Type:&lt;/strong&gt;&amp;ensp;Animal (Ind reg)&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Instructions:&lt;/strong&gt;&lt;br&gt;&quot;+in_strInstructions+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If these details have been entered correctly, please click 'Continue'. Otherwise, please click 'Stop' and complete this registration manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 3" IN_WidthHeight="[{500,350}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1">
+                  <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP3" sap:VirtualizedContainerService.HintSize="382,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 3" IN_PopupMessage="[&quot;&lt;h1&gt;Add Visit&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;Please verify that the correct visit data has been added.&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Disease:&lt;/strong&gt;&amp;ensp;&quot;+in_strDisease+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Outbreak/Incident Number:&lt;/strong&gt;&amp;ensp;&quot;+listIncidentsFiltered.Last+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Raised Date:&lt;/strong&gt;&amp;ensp;&quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Raised By:&lt;/strong&gt;&amp;ensp;Tracings (SSC)&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Date Visit Due:&lt;/strong&gt;&amp;ensp;&quot;+io_dictFormDetails(&quot;DateVisitDue&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Visit Types:&lt;/strong&gt;&amp;ensp;Clinical Inspection/Examination, Sampling Epidemiology Blood, Visit Tracings&quot;+If(in_strFormType=&quot;Zonal&quot;,&quot; Zonal Move&quot;,&quot;&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Contact Date:&lt;/strong&gt;&amp;ensp;&quot;+io_dictFormDetails(&quot;ContactDate&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Contact Case:&lt;/strong&gt;&amp;ensp;&quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Tracing Type:&lt;/strong&gt;&amp;ensp;&quot;+io_dictFormDetails(&quot;TracingType&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Contact Type:&lt;/strong&gt;&amp;ensp;Animal (Ind reg)&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Instructions:&lt;/strong&gt;&lt;br&gt;&quot;+io_dictFormDetails(&quot;Instructions&quot;).Replace(Environment.NewLine,&quot;&lt;br&gt;&quot;)+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;-----&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If these details have been entered correctly, please click 'Continue'. Otherwise, please click 'Stop' and complete this registration manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 3" IN_WidthHeight="[{700,700}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </d:Generic_PopUp>
-                  <InvokeMethod DisplayName="Start timer - PP3" sap:VirtualizedContainerService.HintSize="334,136.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
+                  <InvokeMethod DisplayName="Start timer - PP3" sap:VirtualizedContainerService.HintSize="382,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
                     <InvokeMethod.TargetObject>
                       <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
                     </InvokeMethod.TargetObject>
@@ -488,10 +521,16 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13" />
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
               </If.Else>
             </If>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Visit'" sap:VirtualizedContainerService.HintSize="507.6,158" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Visit'" sap:VirtualizedContainerService.HintSize="519.6,182.8" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="484, 2086, 298, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add New Visit'" FullSelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add New Visit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add New Visit' class='bg-defra-lime-green-200 text-defra-lime-green-950 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='Add New Visit             ' check:text='Add New Visit' /&gt;" Guid="cdba1abf-7c9c-46eb-bab1-8f69c98e81f8" InformativeScreenshot="98b5f4533f74425bdc18863b7e9c014b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>

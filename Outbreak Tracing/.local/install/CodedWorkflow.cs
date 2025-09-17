@@ -4,6 +4,10 @@ using System.Data;
 using UiPath.CodedWorkflows;
 using UiPath.Core;
 using UiPath.Core.Activities.Storage;
+using UiPath.Excel;
+using UiPath.Excel.Activities;
+using UiPath.Excel.Activities.API;
+using UiPath.Excel.Activities.API.Models;
 using UiPath.Mail.Activities.Api;
 using UiPath.Orchestrator.Client.Models;
 using UiPath.Testing;
@@ -25,8 +29,10 @@ namespace OutbreakTracing
     {
         public CodedWorkflow()
         {
-            _ = new System.Type[]{typeof(UiPath.Core.Activities.API.ISystemService), typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Mail.Activities.Api.IMailService), typeof(UiPath.Word.Activities.API.IWordService), typeof(UiPath.Testing.API.ITestingService)};
+            _ = new System.Type[]{typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Excel.Activities.API.IExcelService), typeof(UiPath.Word.Activities.API.IWordService), typeof(UiPath.Testing.API.ITestingService), typeof(UiPath.Core.Activities.API.ISystemService), typeof(UiPath.Mail.Activities.Api.IMailService)};
         }
+
+        protected UiPath.Excel.Activities.API.IExcelService excel { get => serviceContainer.Resolve<UiPath.Excel.Activities.API.IExcelService>(); }
 
         protected UiPath.Mail.Activities.Api.IMailService mail { get => serviceContainer.Resolve<UiPath.Mail.Activities.Api.IMailService>(); }
 

@@ -5,11 +5,12 @@
   "main": "Main.xaml",
   "dependencies": {
     "DRACOE.Logging.64": "[1.0.9]",
+    "DRACOE.Microsoft.Graph.64": "[1.0.44]",
     "DRACOE.PopUps.64": "[1.0.8]",
-    "UiPath.Excel.Activities": "[2.22.3]",
+    "UiPath.Excel.Activities": "[3.2.1]",
     "UiPath.Mail.Activities": "[1.23.11]",
     "UiPath.PDF.Activities": "[3.19.1]",
-    "UiPath.System.Activities": "[24.10.4]",
+    "UiPath.System.Activities": "[25.6.1]",
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[23.10.13]",
     "UiPath.WebAPI.Activities": "[1.21.1]",
@@ -48,8 +49,43 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
-    "modernBehavior": true,
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "e4aa0064-bcdd-4868-951f-5d66def86c15",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Update JRF Tracker SPOL.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "94695a8c-b8e9-4b05-9595-e06af6ef4b35",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Update Bluetongue Tracker SPOL.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "4dea8e52-4c6d-4f74-811b-595fd11272cf",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Send and Save Email.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "2f9a593b-57af-401e-9c71-d29585fcd061",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\tc01 Process Transaction - Confirmed Case.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "a5eb598c-d621-4d82-a019-d6b8608b3d97",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\tc02 Process Transaction - Zonal.xaml"
+      }
+    ],
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
