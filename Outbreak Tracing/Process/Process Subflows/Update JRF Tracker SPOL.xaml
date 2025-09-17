@@ -1,0 +1,371 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Update_JRF_Tracker" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:d="clr-namespace:DRACOE_PopUps_64;assembly=DRACOE.PopUps.64" xmlns:ds="clr-namespace:DRACOE_Microsoft_Graph_64.SharePoint;assembly=DRACOE Microsoft Graph 64" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dictFormDetails" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_strJRFPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Update_JRF_Tracker.in_strJRFPath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Update_JRF_Tracker.in_strJRFPath>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Update_JRF_Tracker_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>DRACOE_Microsoft_Graph_64.Authentication</x:String>
+      <x:String>DRACOE_Microsoft_Graph_64.SharePoint</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Text.Json</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>DRACOE_PopUps_64</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Globalization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>DRACOE Microsoft Graph 64</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Text.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>DRACOE.PopUps.64</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Update_JRF_Tracker" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3279.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Update JRF tracker" sap:VirtualizedContainerService.HintSize="513.6,3256" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="strSiteID" />
+        <Variable x:TypeArguments="x:String" Name="strListID" />
+        <Variable x:TypeArguments="ss:SecureString" Name="strBearerToken" />
+        <Variable x:TypeArguments="njl:JObject" Name="jsonListItem" />
+        <Variable x:TypeArguments="x:String" Name="strNewItemID" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - update JRF tracker" sap:VirtualizedContainerService.HintSize="479.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding new item to JRF tracker&quot;]" />
+      <Assign DisplayName="Assign init json object" sap:VirtualizedContainerService.HintSize="479.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JObject">[jsonListItem]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JObject">[new JObject]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign  - init fields" sap:VirtualizedContainerService.HintSize="479.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JToken">[new JObject]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:MultipleAssign sap2010:Annotation.AnnotationText="field_0 - Date added to Tracker&#xA;field_1 - JRF Due Date&#xA;field_2 - Priority&#xA;field_3 - Disease Reference Number&#xA;field_4 - FOB number&#xA;field_5 - JRF number &#xA;field_6 - CPH&#xA;field_7 - JRF Type&#xA;field_9 - Surname&#xA;field_10 - Address&#xA;field_11 - Postcode&#xA;field_12 - Phone Number&#xA;field_13 - Mobile Number&#xA;EmailAddress - Email address&#xA;&#xA;" DisplayName="Create JSON list item" sap:VirtualizedContainerService.HintSize="479.6,829.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_0")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[Now]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_1")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[Date.Parse(in_dictFormDetails("DateVisitDue"),CultureInfo.GetCultureInfo("en-GB"))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_2")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("Priority")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_3")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("ContactCase")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_4")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">["FOB"+in_dictFormDetails("FOB")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_5")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("JRF")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_6")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("CPH")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_7")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">["Visit Requested by Tracings"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_9")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("OccupierName")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_10")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("Address")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_11")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("Postcode")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_12")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("PhoneNumber")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("field_13")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("MobileNumber")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")("EmailAddress")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JToken">[in_dictFormDetails("Email")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:MultipleAssign>
+      <If Condition="[CBool(g_Config(&quot;PausePoint4&quot;))]" DisplayName="Pause Point 4?" sap:VirtualizedContainerService.HintSize="479.6,1087.2" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <InvokeMethod DisplayName="Stop timer - PP4" sap:VirtualizedContainerService.HintSize="382,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Stop">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
+              </InvokeMethod.TargetObject>
+            </InvokeMethod>
+            <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP4" sap:VirtualizedContainerService.HintSize="382,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 4" IN_PopupMessage="[&quot;&lt;h1&gt;Update JRF Tracker&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;A new item with the following details will be added to the JRF tracker:&lt;/p&gt;&quot;+&#xA;&quot;&lt;strong&gt;Date added to tracker:&lt;/strong&gt;&amp;ensp;&quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Due Date:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;DateVisitDue&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Priority:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;Priority&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Disease Reference Number:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;ContactCase&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;FOB Number:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;FOB&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Number:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;JRF&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;CPH Number:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;CPH&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;JRF Type:&lt;/strong&gt;&amp;ensp;Visit Requested by Tracings&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Keeper Surname:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;OccupierName&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Address:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;Address&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Postcode:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;Postcode&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Phone Number:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;PhoneNumber&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Mobile Number:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;MobileNumber&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Email Address:&lt;/strong&gt;&amp;ensp;&quot;+in_dictFormDetails(&quot;Email&quot;)+&quot;&lt;br&gt;&quot;+&#xA;&quot;&lt;strong&gt;Attachment:&lt;/strong&gt;&amp;ensp;&quot;+in_strJRFPath+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If any of the details appear incorrect, please click 'Stop' and proceed with the rest of this transaction manually. Otherwise, please click 'Continue'.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 4" IN_WidthHeight="[{500,750}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
+            <InvokeMethod DisplayName="Start timer - PP4" sap:VirtualizedContainerService.HintSize="382,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Start">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="sd:Stopwatch">[g_swProcessingTimer]</InArgument>
+              </InvokeMethod.TargetObject>
+            </InvokeMethod>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <ds:Add_Sharepoint_List_Item DisplayName="Add Sharepoint List Item (Add_Sharepoint_List_Item)" sap:VirtualizedContainerService.HintSize="479.6,332.8" sap2010:WorkflowViewState.IdRef="Add_Sharepoint_List_Item_3" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strBody="[jsonListItem]" in_strListID="[g_Config(&quot;JRFTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;JRFTrackerSiteID&quot;).ToString]" out_strID="[strNewItemID]" />
+      <ui:LogMessage DisplayName="Log Message - add file" sap:VirtualizedContainerService.HintSize="479.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Appending JRF to new JRF tracker item&quot;]" />
+      <ui:InvokeProcess ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process - add file attachment" FolderPath="APHA Root/Outbreak Tracing" sap:VirtualizedContainerService.HintSize="479.6,343.2" sap2010:WorkflowViewState.IdRef="InvokeProcess_2" ProcessName="Add.Sharepoint.File.Attachment" UsePackage="False">
+        <ui:InvokeProcess.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strSharepointURL">[g_Config("JRFTrackerURL").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_strListID">[CInt(strNewItemID)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strListName">[g_Config("JRFTrackerDisplayName").ToString]</InArgument>
+          <InArgument x:TypeArguments="scg:IEnumerable(x:String)" x:Key="in_ieFilePaths">[{in_strJRFPath}]</InArgument>
+        </ui:InvokeProcess.Arguments>
+      </ui:InvokeProcess>
+    </Sequence>
+  </Sequence>
+</Activity>
