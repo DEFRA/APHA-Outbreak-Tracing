@@ -3,7 +3,7 @@
     <x:Property Name="out_boolLastTransaction" Type="OutArgument(x:Boolean)" />
     <x:Property Name="io_dtEmailsToProcess" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_dtBatches" Type="InOutArgument(sd:DataTable)" />
-    <x:Property Name="io_intSubTransactionNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="io_intSubTransactionNumber" Type="InOutArgument(x:Int32)" />
     <x:Property Name="in_boolContinue" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_TransactionNumber" Type="InArgument(x:Int32)" />
     <x:Property Name="io_strFormType" Type="InOutArgument(x:String)" />
@@ -169,7 +169,7 @@
       <AssemblyReference>DRACOE.PopUps.64</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="GetTransactionData" sap:VirtualizedContainerService.HintSize="1050,684.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="GetTransactionData" sap:VirtualizedContainerService.HintSize="1468.8000000000002,382.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="strAttachment" />
       <Variable x:TypeArguments="x:Boolean" Name="boolMoveInProgress" />
@@ -187,10 +187,7 @@
     <Flowchart.StartNode>
       <x:Reference>__ReferenceID16</x:Reference>
     </Flowchart.StartNode>
-    <FlowDecision x:Name="__ReferenceID16" DisplayName="Emails retrieved?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-      <FlowDecision.Condition>
-        <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="io_dtEmailsToProcess IsNot Nothing" />
-      </FlowDecision.Condition>
+    <FlowDecision x:Name="__ReferenceID16" Condition="[io_dtEmailsToProcess IsNot Nothing]" DisplayName="Emails retrieved?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -219,7 +216,7 @@
                   <av:Size x:Key="ShapeSize">110,70</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Get next batch" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <Sequence DisplayName="Get next batch" sap:VirtualizedContainerService.HintSize="672,4007.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="strBatchSpecies" />
                   <Variable x:TypeArguments="x:String" Name="strBatchLKL" />
@@ -289,21 +286,21 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <If Condition="[in_TransactionNumber&gt;1 and not in_boolContinue]" DisplayName="If single mode form" sap:VirtualizedContainerService.HintSize="638,56.8" sap2010:WorkflowViewState.IdRef="If_8">
+                <If Condition="[in_TransactionNumber&gt;1 and not in_boolContinue]" DisplayName="If single mode form" sap:VirtualizedContainerService.HintSize="638,1217.2" sap2010:WorkflowViewState.IdRef="If_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="558,1488.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="558,955.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <TryCatch DisplayName="Try Catch - single mode form" sap:VirtualizedContainerService.HintSize="524,1428.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                      <TryCatch DisplayName="Try Catch - single mode form" sap:VirtualizedContainerService.HintSize="524,895.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                         <TryCatch.Try>
                           <Sequence DisplayName="Prompt user for next batch" sap:VirtualizedContainerService.HintSize="416,488.8" sap2010:WorkflowViewState.IdRef="Sequence_45">
                             <sap:WorkflowViewStateService.ViewState>
@@ -318,7 +315,7 @@
                           <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="490,706.8" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
@@ -326,13 +323,13 @@
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
                               </ActivityAction.Argument>
-                              <Sequence sap:VirtualizedContainerService.HintSize="484,635.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                              <Sequence DisplayName="Move incomplete zonal email?" sap:VirtualizedContainerService.HintSize="484,635.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[io_intSubTransactionNumber&gt;1 and not io_boolLastBatch and io_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal batches remain and not first batch" sap:VirtualizedContainerService.HintSize="450,527.6" sap2010:WorkflowViewState.IdRef="If_9">
+                                <If Condition="[io_intSubTransactionNumber&gt;0 and not io_boolLastBatch and io_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal batches remain and not first batch" sap:VirtualizedContainerService.HintSize="450,527.6" sap2010:WorkflowViewState.IdRef="If_9">
                                   <If.Then>
                                     <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,331.6" sap2010:WorkflowViewState.IdRef="Sequence_42">
                                       <sap:WorkflowViewStateService.ViewState>
@@ -764,7 +761,7 @@
                                           <av:PointCollection x:Key="ConnectorLocation">505,1090 475,1090 475,540 620,540 620,510</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence DisplayName="Read progress file" sap:VirtualizedContainerService.HintSize="604,2168" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                      <Sequence DisplayName="Read progress file" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                         <Sequence.Variables>
                                           <Variable x:TypeArguments="x:Int32" Name="intProgressCounter" />
                                           <Variable x:TypeArguments="x:Boolean" Name="boolTransactionFound" />
