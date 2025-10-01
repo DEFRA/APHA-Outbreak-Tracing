@@ -216,7 +216,7 @@
                   <av:Size x:Key="ShapeSize">110,70</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Get next batch" sap:VirtualizedContainerService.HintSize="672,4007.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <Sequence DisplayName="Get next batch" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_14">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="strBatchSpecies" />
                   <Variable x:TypeArguments="x:String" Name="strBatchLKL" />
@@ -596,9 +596,9 @@
                         <ui:LogMessage DisplayName="Log Message - move to In Progress" sap:VirtualizedContainerService.HintSize="570,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Moving email to &quot;+g_Config(&quot;InProgress&quot;).ToString]" />
                         <de:Move_Email DisplayName="Move Email to In Progress" sap:VirtualizedContainerService.HintSize="570,280.4" sap2010:WorkflowViewState.IdRef="Move_Email_2" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" in_strEmailID="[rowToProcessMail(&quot;EmailID&quot;).ToString]" in_strNewFolderID="[g_Config(&quot;InProgressID&quot;).ToString]" />
                         <ui:LogMessage DisplayName="Log Message - recapturing In Progress" sap:VirtualizedContainerService.HintSize="570,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Recapturing in progress email.&quot;]" />
-                        <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[rowInProgressMail is Nothing]" DisplayName="Do While - recapture in progress email" sap:VirtualizedContainerService.HintSize="570,1348.4" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1" MaxIterations="10">
+                        <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[rowInProgressMail is Nothing]" DisplayName="Do While - recapture in progress email" sap:VirtualizedContainerService.HintSize="570,1371.6" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1" MaxIterations="10">
                           <ui:InterruptibleDoWhile.Body>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,1201.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,1224.4" sap2010:WorkflowViewState.IdRef="Sequence_25">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="sd:DataTable" Name="dtInProgress" />
                               </Sequence.Variables>
@@ -607,7 +607,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:RetryScope sap2010:Annotation.AnnotationText="Allows for occasional request timeouts." DisplayName="Retry Scope - get in progress emails" sap:VirtualizedContainerService.HintSize="502,729.6" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+                              <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" sap2010:Annotation.AnnotationText="Allows for occasional request timeouts." DisplayName="Retry Scope - get in progress emails" sap:VirtualizedContainerService.HintSize="502,752.8" sap2010:WorkflowViewState.IdRef="RetryScope_2">
                                 <ui:RetryScope.ActivityBody>
                                   <ActivityAction>
                                     <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,488.8" sap2010:WorkflowViewState.IdRef="Sequence_60">
@@ -684,7 +684,13 @@
                           </If.Else>
                         </If>
                         <ui:LogMessage DisplayName="Log Message - email recaptured" sap:VirtualizedContainerService.HintSize="570,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Email successfully recaptured from In Progress. Saving attachments.&quot;]" />
-                        <de:Save_Email_Attachments DisplayName="Save Email Attachments" sap:VirtualizedContainerService.HintSize="570,332.8" sap2010:WorkflowViewState.IdRef="Save_Email_Attachments_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" in_strEmailID="[rowInProgressMail(&quot;EmailID&quot;).ToString]" in_strFolderPath="[g_Config(&quot;LocalData&quot;).ToString]" in_strRegexFilter="[&quot;^&quot;+strAttachment+&quot;$&quot;]" />
+                        <de:Save_Email_Attachments sap2010:Annotation.AnnotationText="Replace non-numeric characters in attachment name with wildcards " DisplayName="Save Email Attachments" sap:VirtualizedContainerService.HintSize="570,377.6" sap2010:WorkflowViewState.IdRef="Save_Email_Attachments_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" in_strEmailID="[rowInProgressMail(&quot;EmailID&quot;).ToString]" in_strFolderPath="[g_Config(&quot;LocalData&quot;).ToString]" in_strRegexFilter="[&quot;^&quot;+Regex.Replace(strAttachment,&quot;[^A-z0-9]&quot;,&quot;.&quot;)+&quot;$&quot;]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </de:Save_Email_Attachments>
                         <Assign DisplayName="Assign current transaction email" sap:VirtualizedContainerService.HintSize="570,105.6" sap2010:WorkflowViewState.IdRef="Assign_30">
                           <Assign.To>
                             <OutArgument x:TypeArguments="sd:DataRow">[g_TransactionEmail]</OutArgument>
@@ -951,7 +957,7 @@
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:ForEachRow>
                                         <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Progress" DataTable="[io_dtBatches]" DisplayName="Add Progress column" sap:VirtualizedContainerService.HintSize="502,222" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
-                                        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="SourceFile" DataTable="[io_dtBatches]" DefaultValue="[g_Config(&quot;LocalData&quot;).ToString+&quot;/&quot;+strAttachment]" DisplayName="Add Source file column" sap:VirtualizedContainerService.HintSize="502,222" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+                                        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="SourceFile" DataTable="[io_dtBatches]" DefaultValue="[g_Config(&quot;LocalData&quot;).ToString+&quot;\&quot;+strAttachment]" DisplayName="Add Source file column" sap:VirtualizedContainerService.HintSize="502,222" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
                                         <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="True" CsvAction="Write" DataTable="[io_dtBatches]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Create progress file" FilePath="[g_Config(&quot;ProgressFilePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="502,265.2" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_1" ShouldQuote="True" />
                                       </Sequence>
                                       <FlowStep.Next>
@@ -972,7 +978,7 @@
                                   <av:PointCollection x:Key="ConnectorLocation">760,945 760,1200 455,1200</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Create Confirmed Case batch" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <Sequence DisplayName="Create Confirmed Case batch" sap:VirtualizedContainerService.HintSize="468,700" sap2010:WorkflowViewState.IdRef="Sequence_10">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -987,8 +993,8 @@
                                     <InArgument x:TypeArguments="x:String">Confirmed Case</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:BuildDataTable DataTable="[io_dtBatches]" DisplayName="Initialise TRF batch table" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;SourceFile&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;EmailID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Progress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                                <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Allows consistency of data handling between TRFs and Zonals" ArrayRow="[{g_Config(&quot;LocalData&quot;).ToString+&quot;/&quot;+strAttachment}]" DataTable="[io_dtBatches]" DisplayName="Add single batch row" sap:VirtualizedContainerService.HintSize="434,258" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                                <ui:BuildDataTable DataTable="[io_dtBatches]" DisplayName="Initialise TRF batch table" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;SourceFile&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EmailID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Progress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                                <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Allows consistency of data handling between TRFs and Zonals" ArrayRow="[{g_Config(&quot;LocalData&quot;).ToString+&quot;\&quot;+strAttachment}]" DataTable="[io_dtBatches]" DisplayName="Add single batch row" sap:VirtualizedContainerService.HintSize="434,258" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -1109,7 +1115,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message - get to process emails" sap:VirtualizedContainerService.HintSize="458,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Getting emails from &quot;+g_Config(&quot;ToProcess&quot;).ToString]" />
-            <ui:RetryScope sap2010:Annotation.AnnotationText="Allows for occasional request timeouts." DisplayName="Retry Scope - Get To Process emails" sap:VirtualizedContainerService.HintSize="458,720.8" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" sap2010:Annotation.AnnotationText="Allows for occasional request timeouts." DisplayName="Retry Scope - Get To Process emails" sap:VirtualizedContainerService.HintSize="458,720.8" sap2010:WorkflowViewState.IdRef="RetryScope_1">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,488.8" sap2010:WorkflowViewState.IdRef="Sequence_59">
