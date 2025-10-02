@@ -215,7 +215,7 @@
               <av:PointCollection x:Key="ConnectorLocation">450,515 450,545 520,545 520,575</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Pause Point 1" sap:VirtualizedContainerService.HintSize="620,3840" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Pause Point 1" sap:VirtualizedContainerService.HintSize="620,4832.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtPausePoint1" />
             </Sequence.Variables>
@@ -260,7 +260,7 @@
                 <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
               </InvokeMethod.TargetObject>
             </InvokeMethod>
-            <If Condition="[in_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal, open excel. If confirmed case, open word." sap:VirtualizedContainerService.HintSize="586,2314.8" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[in_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal, open excel. If confirmed case, open word." sap:VirtualizedContainerService.HintSize="586,3307.6" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="552,1124.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
                   <sap:WorkflowViewStateService.ViewState>
@@ -304,64 +304,59 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,1018.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="537.6,2011.6" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,85.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="503.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Presenting TRF for PP1: &quot;+g_TransactionItem(&quot;SourceFile&quot;).ToString]" />
+                  <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - open doc for PP1 review" FilePath="[g_TransactionItem(&quot;SourceFile&quot;).ToString]" sap:VirtualizedContainerService.HintSize="503.6,740.8" sap2010:WorkflowViewState.IdRef="WordApplicationScope_2" ReadOnly="True" SensitivityOperation="None">
+                    <p:WordApplicationScope.Body>
+                      <ActivityAction x:TypeArguments="ui:WordDocument">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,593.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <d:Editable_DataTable in_FullReadOnly="{x:Null}" out_TableHTML="{x:Null}" DisplayName="Editable Data Table - PP1" sap:VirtualizedContainerService.HintSize="382,533.6" sap2010:WorkflowViewState.IdRef="Editable_DataTable_2" in_Body="[&quot;&lt;h1&gt;Read &quot;+in_strFormType+&quot; data&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;Please confirm that the transaction data has been read correctly from its source.&lt;br&gt;&quot;+&#xA;&quot;You can make any corrections necessary by clicking into the relevant value in the right-hand column&lt;br&gt;&quot;+&#xA;&quot;Please note that any changes will not be validated; errors in data entry may cause the robot to fail in later processing.&lt;br&gt;&quot;+&#xA;&quot;When you are ready to continue, please click the 'Continue' button. If there is a problem, please click 'Stop' and proceed with this transaction manually.&lt;/p&gt;&quot;]" in_CSS_Path="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\Editable Standard Template.css&quot;]" in_FormHTMLPath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormRender.html&quot;]" in_ShowForm="True" in_TemplatePath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormCreatorTemplate.html&quot;]" in_WidthHeight="[{1000,800}]" io_Table="[dtPausePoint1]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </p:WordApplicationScope.Body>
+                  </p:WordApplicationScope>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="503.6,1035.2" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                     <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,792" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="468,933.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - open doc for PP1 review" FilePath="[g_TransactionItem(&quot;SourceFile&quot;).ToString]" sap:VirtualizedContainerService.HintSize="450,732" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1" ReadOnly="True" SensitivityOperation="None">
-                          <p:WordApplicationScope.Body>
-                            <ActivityAction x:TypeArguments="ui:WordDocument">
+                        <uix:NApplicationCard sap2010:Annotation.AnnotationText="Word Application Scope misbehaves or doesn't work when packaged up." AttachMode="ByInstance" CloseMode="Always" DisplayName="Open TRF for PP1" sap:VirtualizedContainerService.HintSize="434,873.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="Always" ScopeGuid="c0c657cf-c601-445a-9697-89c9a0a18834" Version="V2">
+                          <uix:NApplicationCard.Body>
+                            <ActivityAction x:TypeArguments="x:Object">
                               <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,593.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <d:Editable_DataTable in_FullReadOnly="{x:Null}" out_TableHTML="{x:Null}" DisplayName="Editable Data Table - PP1" sap:VirtualizedContainerService.HintSize="382,533.6" sap2010:WorkflowViewState.IdRef="Editable_DataTable_2" in_Body="[&quot;&lt;h1&gt;Read &quot;+in_strFormType+&quot; data&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;Please confirm that the transaction data has been read correctly from its source.&lt;br&gt;&quot;+&#xA;&quot;You can make any corrections necessary by clicking into the relevant value in the right-hand column&lt;br&gt;&quot;+&#xA;&quot;Please note that any changes will not be validated; errors in data entry may cause the robot to fail in later processing.&lt;br&gt;&quot;+&#xA;&quot;When you are ready to continue, please click the 'Continue' button. If there is a problem, please click 'Stop' and proceed with this transaction manually.&lt;/p&gt;&quot;]" in_CSS_Path="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\Editable Standard Template.css&quot;]" in_FormHTMLPath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormRender.html&quot;]" in_ShowForm="True" in_TemplatePath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormCreatorTemplate.html&quot;]" in_WidthHeight="[{1000,800}]" io_Table="[dtPausePoint1]" />
-                              </Sequence>
+                              <d:Editable_DataTable in_FullReadOnly="{x:Null}" out_TableHTML="{x:Null}" DisplayName="Editable Data Table - PP1" sap:VirtualizedContainerService.HintSize="334,510.4" sap2010:WorkflowViewState.IdRef="Editable_DataTable_4" in_Body="[&quot;&lt;h1&gt;Read &quot;+in_strFormType+&quot; data&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;Please confirm that the transaction data has been read correctly from its source.&lt;br&gt;&quot;+&#xA;&quot;You can make any corrections necessary by clicking into the relevant value in the right-hand column&lt;br&gt;&quot;+&#xA;&quot;Please note that any changes will not be validated; errors in data entry may cause the robot to fail in later processing.&lt;br&gt;&quot;+&#xA;&quot;When you are ready to continue, please click the 'Continue' button. If there is a problem, please click 'Stop' and proceed with this transaction manually.&lt;/p&gt;&quot;]" in_CSS_Path="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\Editable Standard Template.css&quot;]" in_FormHTMLPath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormRender.html&quot;]" in_ShowForm="True" in_TemplatePath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormCreatorTemplate.html&quot;]" in_WidthHeight="[{1000,800}]" io_Table="[dtPausePoint1]" />
                             </ActivityAction>
-                          </p:WordApplicationScope.Body>
-                        </p:WordApplicationScope>
+                          </uix:NApplicationCard.Body>
+                          <uix:NApplicationCard.TargetApp>
+                            <uix:TargetApp Area="0, 0, 0, 0" Arguments="[&quot;/h &quot;&quot;&quot;+g_TransactionItem(&quot;SourceFile&quot;).ToString+&quot;&quot;&quot;&quot;]" FilePath="C:\Program Files\Microsoft Office\root\Office16\winword.exe" Selector="&lt;wnd app='winword.exe' cls='OpusApp' /&gt;" />
+                          </uix:NApplicationCard.TargetApp>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NApplicationCard>
                       </Sequence>
                     </ui:CommentOut.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
                   </ui:CommentOut>
-                  <uix:NApplicationCard sap2010:Annotation.AnnotationText="Word Application Scope misbehaves or doesn't work when packaged up." AttachMode="ByInstance" CloseMode="Always" DisplayName="Open TRF for PP1" sap:VirtualizedContainerService.HintSize="434,873.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="Always" ScopeGuid="c0c657cf-c601-445a-9697-89c9a0a18834" Version="V2">
-                    <uix:NApplicationCard.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                        </ActivityAction.Argument>
-                        <d:Editable_DataTable in_FullReadOnly="{x:Null}" out_TableHTML="{x:Null}" DisplayName="Editable Data Table - PP1" sap:VirtualizedContainerService.HintSize="334,510.4" sap2010:WorkflowViewState.IdRef="Editable_DataTable_4" in_Body="[&quot;&lt;h1&gt;Read &quot;+in_strFormType+&quot; data&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;Please confirm that the transaction data has been read correctly from its source.&lt;br&gt;&quot;+&#xA;&quot;You can make any corrections necessary by clicking into the relevant value in the right-hand column&lt;br&gt;&quot;+&#xA;&quot;Please note that any changes will not be validated; errors in data entry may cause the robot to fail in later processing.&lt;br&gt;&quot;+&#xA;&quot;When you are ready to continue, please click the 'Continue' button. If there is a problem, please click 'Stop' and proceed with this transaction manually.&lt;/p&gt;&quot;]" in_CSS_Path="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\Editable Standard Template.css&quot;]" in_FormHTMLPath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormRender.html&quot;]" in_ShowForm="True" in_TemplatePath="[Directory.GetCurrentDirectory + &quot;\Assets\Generic\FormCreatorTemplate.html&quot;]" in_WidthHeight="[{1000,800}]" io_Table="[dtPausePoint1]" />
-                      </ActivityAction>
-                    </uix:NApplicationCard.Body>
-                    <uix:NApplicationCard.TargetApp>
-                      <uix:TargetApp Area="0, 0, 0, 0" Arguments="[&quot;/h &quot;&quot;&quot;+g_TransactionItem(&quot;SourceFile&quot;).ToString+&quot;&quot;&quot;&quot;]" FilePath="C:\Program Files\Microsoft Office\root\Office16\winword.exe" Selector="&lt;wnd app='winword.exe' cls='OpusApp' /&gt;" />
-                    </uix:NApplicationCard.TargetApp>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </uix:NApplicationCard>
                 </Sequence>
               </If.Else>
             </If>
