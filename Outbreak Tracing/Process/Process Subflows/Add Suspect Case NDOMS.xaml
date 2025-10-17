@@ -48,6 +48,7 @@
       <x:String>DRACOE_PopUps_64</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -132,21 +133,22 @@
       <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Suspect_Case_NDOMS" sap:VirtualizedContainerService.HintSize="1451.6000000000001,6364" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Suspect_Case_NDOMS" sap:VirtualizedContainerService.HintSize="1451.6000000000001,6785.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="562,6340.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="1022,6762.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="528,6179.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="988,6601.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strTime" />
             </Sequence.Variables>
@@ -155,8 +157,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - add suspect case" sap:VirtualizedContainerService.HintSize="494,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding suspect case to premises &quot;+in_dictFormDetails(&quot;CPH&quot;)]" />
-            <uix:NCheckState DisplayName="Check App State 'Premises Detail'" EnableIfExists="False" sap:VirtualizedContainerService.HintSize="494,636" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Timeout="1" Version="V3">
+            <ui:LogMessage DisplayName="Log Message - add suspect case" sap:VirtualizedContainerService.HintSize="954,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding suspect case to premises &quot;+in_dictFormDetails(&quot;CPH&quot;)]" />
+            <uix:NCheckState DisplayName="Check App State 'Premises Detail'" EnableIfExists="False" sap:VirtualizedContainerService.HintSize="954,597.6" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Timeout="1" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
@@ -167,7 +169,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,344.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,346.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -181,17 +183,17 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/3198" DesignTimeRectangle="855, 456, 242, 55" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'Premises Detail'" FullSelectorArgument="&lt;webctrl aaname='Premises Detail' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Premises Detail' tag='A' type='' class='border-b-2 text-defra-warm-grey-700 inline-flex items-center border-transparent px-1 pt-1 text-xs font-medium hover:border-defra-cyan-700 hover:text-defra-cyan-950' check:innerText='Premises Detail' /&gt;" Guid="660d0628-c588-4c18-8a3d-0e18173440f7" ImageBase64="" InformativeScreenshot="27cbc690d010d9133f5c16a3e45c2def.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Visit Details for Visit ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NCheckState.Target>
             </uix:NCheckState>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Premises Status'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Premises Status'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152" DesignTimeRectangle="1006, 456, 251, 55" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'Premises Status'" FullSelectorArgument="&lt;webctrl aaname='Premises Status' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Premises Status' tag='A' type='' class='border-b-2 text-defra-warm-grey-700 inline-flex items-center border-transparent px-1 pt-1 text-xs font-medium hover:border-defra-cyan-700 hover:text-defra-cyan-950' check:innerText='Premises Status' /&gt;" Guid="3200aa80-a6f3-435d-888d-441ec07526cd" InformativeScreenshot="f05db2b9b1cbdcdbabc0117204553596.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Visit Details for Visit ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add Suspect Case Details'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add Suspect Case Details'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/152" DesignTimeRectangle="266, 914, 393, 55" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'Add Suspect Case Details'" FullSelectorArgument="&lt;webctrl tag='A' visibleinnertext='Add Suspect Case Details' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='A' visibleinnertext='Add Suspect Case Details' type='' class='border-b-2 text-defra-warm-grey-900 inline-flex items-center border-transparent px-1 pt-1 text-xs font-semibold hover:border-defra-lime-green-700 hover:text-defra-lime-green-800' aaname='                                 Add Suspect Case Details                             ' check:text='Add Suspect Case Details' /&gt;" Guid="b73cb9ff-7ea7-4649-8a67-b1b5ac27cb5b" InformativeScreenshot="79e33ba49048675d72587d5e0cc6cb7f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Premises Status for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NSelectItem DisplayName="Select Item 'Disease Reference'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="BTR" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Disease Reference'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="BTR" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="43">
                   <x:String></x:String>
@@ -243,17 +245,17 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="240, 805, 353, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT suscasediseaseref'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Suspect Case Reference  Disease' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Suspect Case Reference  Disease' type='' class='border-0 text-defra-warm-grey-900 block w-auto rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="7197687c-5f3a-40ff-8388-ccabf151e2a9" InformativeScreenshot="17b097217ac25c74d935400193883216.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type TRC" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="494,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Text="[in_dictFormDetails(&quot;TRC&quot;)]" Version="V3">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type TRC" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Text="[in_dictFormDetails(&quot;TRC&quot;)]" Version="V3">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="907, 1081, 240, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT suscasenumber'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Suspect Case Reference ID' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Suspect Case Reference ID' type='text' class='border-0 text-defra-warm-grey-900 block w-24 rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="482a4aa7-6c79-47b4-853c-9e91bb058690" InformativeScreenshot="29f18d445ed64f49dddc677aea0028ab.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'First Notification Date'" sap:VirtualizedContainerService.HintSize="494,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_1" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;firstnotedate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'First Notification Date'" sap:VirtualizedContainerService.HintSize="954,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_1" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;firstnotedate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
               <uix:NInjectJsScript.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="266, 1271, 375, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT firstnotedate'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='First Notification Date' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='First Notification Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="22d52791-00a0-4f98-9ff0-12ac50765cca" InformativeScreenshot="69cdfe16d7fa11678c579bfcaf69188d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <Assign DisplayName="Store time for Pause Point accuracy" sap:VirtualizedContainerService.HintSize="494,114.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="Store time for Pause Point accuracy" sap:VirtualizedContainerService.HintSize="954,114.8" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strTime]</OutArgument>
               </Assign.To>
@@ -261,12 +263,12 @@
                 <InArgument x:TypeArguments="x:String">[Now.ToString("HH:mm")]</InArgument>
               </Assign.Value>
             </Assign>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'First Notification Time'" sap:VirtualizedContainerService.HintSize="494,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_2" InputParameter="[strTime]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_time) {&#xA;  const input = document.getElementById(&quot;&quot;firstnotetime&quot;&quot;);&#xA;  input.value = in_time;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'First Notification Time'" sap:VirtualizedContainerService.HintSize="954,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_2" InputParameter="[strTime]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_time) {&#xA;  const input = document.getElementById(&quot;&quot;firstnotetime&quot;&quot;);&#xA;  input.value = in_time;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
               <uix:NInjectJsScript.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="1000, 995, 238, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT firstnotetime'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='First Notification Time' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='First Notification Time' type='time' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="d9677ac8-44ee-4eb6-b311-b49c11b61acd" InformativeScreenshot="bb3f818b5a74f2f719aa6552eb0b7607.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <uix:NSelectItem DisplayName="Select Item 'Report Origin'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="APHA" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Report Origin'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="APHA" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="12">
                   <x:String></x:String>
@@ -287,17 +289,17 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="266, 1461, 390, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT reportorigin'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Report Origin' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Report Origin' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="9af97292-f514-4a07-8d4e-b3c6908745f4" InformativeScreenshot="29c155395c4f1cf88eceec5bb0afbcbc.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Inquiry Initiation Date'" sap:VirtualizedContainerService.HintSize="494,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_3" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;inqinitdate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Inquiry Initiation Date'" sap:VirtualizedContainerService.HintSize="954,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_3" InputParameter="[Now.ToString(&quot;yyyy-MM-dd&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_date) {&#xA;  const input = document.getElementById(&quot;&quot;inqinitdate&quot;&quot;);&#xA;  input.value = in_date;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
               <uix:NInjectJsScript.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="266, 1651, 375, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT inqinitdate'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Inquiry Initiation Date' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Inquiry Initiation Date' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="e5a9f0fb-6d44-47fb-a6c5-d4727dfa4e09" InformativeScreenshot="82445734ad352b6ec5751d13ed182acd.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Inquiry Initiation Time'" sap:VirtualizedContainerService.HintSize="494,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_4" InputParameter="[strTime]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_time) {&#xA;  const input = document.getElementById(&quot;&quot;inqinittime&quot;&quot;);&#xA;  input.value = in_time;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
+            <uix:NInjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script 'Inquiry Initiation Time'" sap:VirtualizedContainerService.HintSize="954,284" sap2010:WorkflowViewState.IdRef="NInjectJsScript_4" InputParameter="[strTime]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" ScriptCode="[&quot;function(e, in_time) {&#xA;  const input = document.getElementById(&quot;&quot;inqinittime&quot;&quot;);&#xA;  input.value = in_time;&#xA;&#xA;  // Trigger input event&#xA;  const event = new Event('input', { bubbles: true });&#xA;  input.dispatchEvent(event);&#xA;&#xA;  // Optional: Also trigger change event&#xA;  const changeEvent = new Event('change', { bubbles: true });&#xA;  input.dispatchEvent(changeEvent);&#xA;}&quot;]" Version="V3">
               <uix:NInjectJsScript.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="1000, 995, 238, 90" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT firstnotetime'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='First Notification Time' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='First Notification Time' type='time' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="d9677ac8-44ee-4eb6-b311-b49c11b61acd" InformativeScreenshot="bb3f818b5a74f2f719aa6552eb0b7607.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <uix:NSelectItem DisplayName="Select Item 'Suspected Disease'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Bluetongue" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Suspected Disease'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Bluetongue" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="1">
                   <x:String></x:String>
@@ -307,7 +309,7 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="2014, 1081, 130, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT suscasediseasety…'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Suspected Disease' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Suspected Disease' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="11d9768c-aaac-429b-83e1-6ff2e8c26e2d" InformativeScreenshot="8384b50e041ac7911aa223be6d1ee8c2.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NSelectItem DisplayName="Select Item 'Outbreak/Incident'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[in_dictFormDetails(&quot;IncidentNumber&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Outbreak/Incident'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[in_dictFormDetails(&quot;IncidentNumber&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="1">
                   <x:String></x:String>
@@ -317,7 +319,7 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="2014, 1271, 130, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT outbreakincident'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Outbreak/Incident' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Outbreak/Incident' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="1f1ce352-1ff6-4205-beaf-f7b7faebdb77" InformativeScreenshot="6140c9d820a5b86584e47f667d95c091.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NSelectItem DisplayName="Select Item 'Reason for Suspicion'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="Trace (Domestic)" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Reason for Suspicion'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="Trace (Domestic)" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="6">
                   <x:String></x:String>
@@ -332,12 +334,12 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="2014, 1461, 706, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT reasonforsus'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Reason for Suspicion' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Reason for Suspicion' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="248f7df1-712d-4184-ab9f-81a0a5420bf0" InformativeScreenshot="ab3762a86ee98e1001f709ed1f2ce7d8.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add Species'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add Species'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="3314, 1005, 327, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add Species'" FullSelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Add Species' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' visibleinnertext='Add Species' type='button' class='bg-defra-lime-green-200 text-defra-lime-green-950 inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='                                 Add Species                                 ' check:text='Add Species' /&gt;" Guid="ca8eac85-7daf-4027-be6f-83db54f317cc" InformativeScreenshot="d01bcdc4ef3996e545aaae9ab72f1fe7.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NSelectItem DisplayName="Select Item 'Species Under Investigation'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="[in_dictFormDetails(&quot;Species&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Species Under Investigation'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="[in_dictFormDetails(&quot;Species&quot;)]" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="12">
                   <x:String></x:String>
@@ -364,7 +366,7 @@
                 </uix:TargetAnchorable>
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NSelectItem DisplayName="Select Item 'Category'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_7" Item="Not Required" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Category'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_7" Item="Not Required" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="2">
                   <x:String></x:String>
@@ -381,12 +383,12 @@
                 </uix:TargetAnchorable>
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="2167, 1492, 129, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add'" FullSelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add' class='bg-defra-lime-green-200 text-defra-lime-green-950 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='                     Add                 ' check:text='Add' /&gt;" Guid="d9a51f2a-a8cc-4321-9116-9113c8e6d2e8" InformativeScreenshot="a3d98a0d7a3016130b3c5cd9bd9827e8.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NSelectItem DisplayName="Select Item 'Status of Inquiry'" sap:VirtualizedContainerService.HintSize="494,190" sap2010:WorkflowViewState.IdRef="NSelectItem_8" Item="Ongoing" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NSelectItem DisplayName="Select Item 'Status of Inquiry'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NSelectItem_8" Item="Ongoing" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NSelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="11">
                   <x:String></x:String>
@@ -406,12 +408,12 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="266, 1424, 740, 90" DesignTimeScaleFactor="2.5" ElementType="DropDown" FriendlyName="'SELECT statusofinquiry'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Status of Inquiry' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Status of Inquiry' type='' class='border-0 text-defra-warm-grey-900 mt-1 block rounded-md py-1.5 pl-3 pr-10 ring-inset focus:ring-2 focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm sm:leading-6' /&gt;" Guid="8e4b78e3-e36f-4a82-aa31-b5149b972b5e" InformativeScreenshot="8e2301bbd2c9f71e56543f4def669d55.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NSelectItem.Target>
             </uix:NSelectItem>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Comments'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="494,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Text="[&quot;JRF raised &quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)+&quot; robot&quot;]" Version="V3">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Comments'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Text="[&quot;JRF raised &quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)+&quot; robot&quot;]" Version="V3">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="266, 1614, 3375, 390" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'TEXTAREA comments'" FullSelectorArgument="&lt;webctrl tag='TEXTAREA' aaname='Comments' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TEXTAREA' aaname='Comments' type='text' class='border-0 text-defra-warm-grey-900 ring-1 ring-defra-warm-grey-300 block w-full rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 sm:text-sm sm:leading-6' /&gt;" Guid="df2d26cd-906e-492d-ab81-2ee3dc3a14f2" InformativeScreenshot="6cac0bfff26444e6e44bfc1e9abc0999.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <If Condition="[CBool(g_Config(&quot;PausePoint6&quot;))]" DisplayName="Pause Point 6?" sap:VirtualizedContainerService.HintSize="494,1087.2" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[CBool(g_Config(&quot;PausePoint6&quot;))]" DisplayName="Pause Point 6?" sap:VirtualizedContainerService.HintSize="954,1087.2" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
@@ -442,11 +444,41 @@
                 </Sequence>
               </If.Else>
             </If>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Suspect Case'" sap:VirtualizedContainerService.HintSize="450,182.8" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add New Suspect Case'" sap:VirtualizedContainerService.HintSize="954,190" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesstatus/suspectcase/update/152" DesignTimeRectangle="484, 2086, 456, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FriendlyName="'Add New Suspect Case'" FullSelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add New Suspect Case' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' visibleinnertext='Add New Suspect Case' class='bg-defra-lime-green-200 text-defra-lime-green-950 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-defra-lime-green-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-defra-lime-green-600' aaname='                             Add New Suspect Case                         ' check:text='Add New Suspect Case' /&gt;" Guid="43705364-0d46-4695-9b26-aa8bf08f57a8" InformativeScreenshot="fdef971e7bef9fb760068107293db0bd.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Suspect Case Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
+            <uix:NCheckState sap2010:Annotation.AnnotationText="Check that NDOMS returns to Premises History page after Suspect Case submission." DisplayName="Check App State 'Premises History'" sap:VirtualizedContainerService.HintSize="954,451.2" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="1c08f39a-5081-4620-b4a8-41176c623f72" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,167.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGoToUrl DisplayName="Go To URL - home page" sap:VirtualizedContainerService.HintSize="416,107.6" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[Regex.Replace(g_Config(&quot;NDOMS_URL&quot;).ToString,&quot;\/$&quot;,&quot;&quot;)+&quot;/Home&quot;]" Version="V3" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,176" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw BRE - suspect case validation error" Exception="[new BusinessRuleException(&quot;Exception encountered on submitting new Suspect Case. Please check for validation errors and complete this case manually.&quot;)]" sap:VirtualizedContainerService.HintSize="416,116" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premisesStatus/152" DesignTimeRectangle="266, 1171, 377, 70" DesignTimeScaleFactor="2.5" ElementType="Text" FriendlyName="'Premises History'" FullSelectorArgument="&lt;webctrl tag='H2' visibleinnertext='Premises History' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H2' visibleinnertext='Premises History' type='' class='leading-7 text-defra-brown-700 text-lg font-medium tracking-wide' aaname='Premises History' check:text='Premises History' /&gt;" Guid="73e00f4d-cc62-4f74-b800-0e67ba82bacc" InformativeScreenshot="b1dc0e0acac10aa870a916fe02b844a5.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Premises Status for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
