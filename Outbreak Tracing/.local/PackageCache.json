@@ -1020,7 +1020,7 @@
     {
       "Package": {
         "Id": "UiPath.Word.Activities",
-        "Version": "2.0.1"
+        "Version": "2.2.0"
       },
       "Assemblies": [
         "C:\\Users\\rm000121\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.2\\lib/net6.0/Microsoft.Extensions.DependencyInjection.dll",
@@ -1035,6 +1035,7 @@
         "C:\\Users\\rm000121\\.nuget\\packages\\nito.collections.deque\\1.1.1\\lib/netstandard2.0/Nito.Collections.Deque.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\nito.disposables\\2.2.1\\lib/netstandard2.1/Nito.Disposables.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\skiasharp\\2.88.8\\lib/net6.0/SkiaSharp.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\system.activities.viewmodels\\1.0.0-20250814.2\\lib/net6.0-windows7.0/System.Activities.ViewModels.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\system.io.abstractions\\3.0.10\\lib/netstandard2.0/System.IO.Abstractions.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\uipath.codedworkflows\\24.10.1\\lib/net6.0-windows7.0/UiPath.CodedWorkflows.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/Microsoft.Office.Interop.Excel.dll",
@@ -1045,17 +1046,17 @@
         "C:\\Users\\rm000121\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/OFFICE.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/UiPath.OfficeLibs.Package.dll",
         "C:\\Users\\rm000121\\.nuget\\packages\\uipath.platform\\25.10.1\\lib/net6.0-windows7.0/UiPath.Platform.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib/net6.0-windows7.0/UiPath.Word.Activities.API.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib/net6.0-windows7.0/UiPath.Word.Activities.Design.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib/net6.0-windows7.0/UiPath.Word.Activities.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib/net6.0-windows7.0/UiPath.Word.Activities.ViewModels.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib/net6.0-windows7.0/UiPath.Word.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\4.0.25103.5784\\lib/net5.0/Xceed.Document.NET.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25103.5784\\lib/net5.0/Xceed.Drawing.NET.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\4.0.25103.5784\\lib/net5.0/Xceed.PDF.NET.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\4.0.25103.5784\\lib/net5.0/Xceed.Words.NET.dll"
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib/net6.0-windows7.0/UiPath.Word.Activities.API.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib/net6.0-windows7.0/UiPath.Word.Activities.Design.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib/net6.0-windows7.0/UiPath.Word.Activities.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib/net6.0-windows7.0/UiPath.Word.Activities.ViewModels.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib/net6.0-windows7.0/UiPath.Word.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\5.0.25228.6154\\lib/net5.0/Xceed.Document.NET.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25228.6154\\lib/net5.0/Xceed.Drawing.NET.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\5.0.25228.6154\\lib/net5.0/Xceed.PDF.NET.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\5.0.25228.6154\\lib/net5.0/Xceed.Words.NET.dll"
       ],
-      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1"
+      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0"
     }
   ],
   "Conflicts": [],
@@ -6604,8 +6605,12 @@
     },
     "UiPath.Word.Activities": {
       "Id": "UiPath.Word.Activities",
-      "Version": "2.0.1",
+      "Version": "2.2.0",
       "Dependencies": [
+        {
+          "Item1": "System.Activities.ViewModels",
+          "Item2": "[1.0.0-20250625.2, )"
+        },
         {
           "Item1": "System.Drawing.Common",
           "Item2": "[6.0.0, )"
@@ -6628,21 +6633,21 @@
         },
         {
           "Item1": "Xceed.Words.NET",
-          "Item2": "[4.0.25103.5784, )"
+          "Item2": "[5.0.25228.6154, )"
         }
       ]
     },
     "Xceed.Document.NET": {
       "Id": "Xceed.Document.NET",
-      "Version": "4.0.25103.5784",
+      "Version": "5.0.25228.6154",
       "Dependencies": [
         {
           "Item1": "Xceed.Pdf",
-          "Item2": "[4.0.25103.5784, 4.0.25103.5784]"
+          "Item2": "[5.0.25228.6154, 5.0.25228.6154]"
         },
         {
           "Item1": "Xceed.Drawing.NET",
-          "Item2": "[1.0.25103.5784, 1.0.25103.5784]"
+          "Item2": "[1.0.25228.6154, 1.0.25228.6154]"
         },
         {
           "Item1": "System.IO.Packaging",
@@ -6652,7 +6657,7 @@
     },
     "Xceed.Drawing.NET": {
       "Id": "Xceed.Drawing.NET",
-      "Version": "1.0.25103.5784",
+      "Version": "1.0.25228.6154",
       "Dependencies": [
         {
           "Item1": "SkiaSharp",
@@ -6662,25 +6667,25 @@
     },
     "Xceed.Pdf": {
       "Id": "Xceed.Pdf",
-      "Version": "4.0.25103.5784",
+      "Version": "5.0.25228.6154",
       "Dependencies": [
         {
           "Item1": "Xceed.Drawing.NET",
-          "Item2": "[1.0.25103.5784, 1.0.25103.5784]"
+          "Item2": "[1.0.25228.6154, 1.0.25228.6154]"
         }
       ]
     },
     "Xceed.Words.NET": {
       "Id": "Xceed.Words.NET",
-      "Version": "4.0.25103.5784",
+      "Version": "5.0.25228.6154",
       "Dependencies": [
         {
           "Item1": "Xceed.Document.NET",
-          "Item2": "[4.0.25103.5784, 4.0.25103.5784]"
+          "Item2": "[5.0.25228.6154, 5.0.25228.6154]"
         },
         {
           "Item1": "Xceed.Drawing.NET",
-          "Item2": "[1.0.25103.5784, 1.0.25103.5784]"
+          "Item2": "[1.0.25228.6154, 1.0.25228.6154]"
         }
       ]
     }
@@ -10089,56 +10094,56 @@
     {
       "Package": {
         "Id": "UiPath.Word.Activities",
-        "Version": "2.0.1"
+        "Version": "2.2.0"
       },
       "Assemblies": [
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.API.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.Design.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.ViewModels.dll",
-        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\lib\\net6.0-windows7.0\\UiPath.Word.dll"
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.API.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.Design.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib\\net6.0-windows7.0\\UiPath.Word.Activities.ViewModels.dll",
+        "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\lib\\net6.0-windows7.0\\UiPath.Word.dll"
       ],
-      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1"
+      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0"
     },
     {
       "Package": {
         "Id": "Xceed.Document.NET",
-        "Version": "4.0.25103.5784"
+        "Version": "5.0.25228.6154"
       },
       "Assemblies": [
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\4.0.25103.5784\\lib\\net5.0\\Xceed.Document.NET.dll"
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\5.0.25228.6154\\lib\\net5.0\\Xceed.Document.NET.dll"
       ],
-      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\4.0.25103.5784"
+      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\5.0.25228.6154"
     },
     {
       "Package": {
         "Id": "Xceed.Drawing.NET",
-        "Version": "1.0.25103.5784"
+        "Version": "1.0.25228.6154"
       },
       "Assemblies": [
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25103.5784\\lib\\net5.0\\Xceed.Drawing.NET.dll"
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25228.6154\\lib\\net5.0\\Xceed.Drawing.NET.dll"
       ],
-      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25103.5784"
+      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25228.6154"
     },
     {
       "Package": {
         "Id": "Xceed.Pdf",
-        "Version": "4.0.25103.5784"
+        "Version": "5.0.25228.6154"
       },
       "Assemblies": [
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\4.0.25103.5784\\lib\\net5.0\\Xceed.PDF.NET.dll"
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\5.0.25228.6154\\lib\\net5.0\\Xceed.PDF.NET.dll"
       ],
-      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\4.0.25103.5784"
+      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\5.0.25228.6154"
     },
     {
       "Package": {
         "Id": "Xceed.Words.NET",
-        "Version": "4.0.25103.5784"
+        "Version": "5.0.25228.6154"
       },
       "Assemblies": [
-        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\4.0.25103.5784\\lib\\net5.0\\Xceed.Words.NET.dll"
+        "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\5.0.25228.6154\\lib\\net5.0\\Xceed.Words.NET.dll"
       ],
-      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\4.0.25103.5784"
+      "Path": "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\5.0.25228.6154"
     }
   ]
 }

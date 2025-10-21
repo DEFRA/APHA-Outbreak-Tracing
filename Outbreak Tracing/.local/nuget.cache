@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rZTXKpyTrWm8rfp5c9q5F6mLLCRgy0jp9se6SgqWxGF3gxQNooy0UeESxWePyj9vLPV0R4fj7UMm5irmx3PQbw==",
+  "dgSpecHash": "pcwGvZCmhCSCBOkIZJNcoitrgWNtDkduoGIV+V9ElzjV4mujrNheTnwLCOiTRhm+fpHP/3mOkX/vbWQK8st45A==",
   "success": true,
   "projectFilePath": "C:\\Users\\rm000121\\OneDrive - Defra\\UiPath\\APHA-Outbreak-Tracing\\Outbreak Tracing\\.local\\",
   "expectedPackageFiles": [
@@ -342,11 +342,11 @@
     "C:\\Users\\rm000121\\.nuget\\packages\\uipath.webapi.activities\\1.21.1\\uipath.webapi.activities.1.21.1.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\uipath.webapi.activities.runtime\\1.21.1\\uipath.webapi.activities.runtime.1.21.1.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\uipath.webview2.runtime.x64\\0.1.0\\uipath.webview2.runtime.x64.0.1.0.nupkg.sha512",
-    "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.0.1\\uipath.word.activities.2.0.1.nupkg.sha512",
-    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\4.0.25103.5784\\xceed.document.net.4.0.25103.5784.nupkg.sha512",
-    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25103.5784\\xceed.drawing.net.1.0.25103.5784.nupkg.sha512",
-    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\4.0.25103.5784\\xceed.pdf.4.0.25103.5784.nupkg.sha512",
-    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\4.0.25103.5784\\xceed.words.net.4.0.25103.5784.nupkg.sha512"
+    "C:\\Users\\rm000121\\.nuget\\packages\\uipath.word.activities\\2.2.0\\uipath.word.activities.2.2.0.nupkg.sha512",
+    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.document.net\\5.0.25228.6154\\xceed.document.net.5.0.25228.6154.nupkg.sha512",
+    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.drawing.net\\1.0.25228.6154\\xceed.drawing.net.1.0.25228.6154.nupkg.sha512",
+    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.pdf\\5.0.25228.6154\\xceed.pdf.5.0.25228.6154.nupkg.sha512",
+    "C:\\Users\\rm000121\\.nuget\\packages\\xceed.words.net\\5.0.25228.6154\\xceed.words.net.5.0.25228.6154.nupkg.sha512"
   ],
   "logs": [
     {

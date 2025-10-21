@@ -166,27 +166,28 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Update_JRF_Tracker" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3279.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Update_JRF_Tracker" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3761.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Update JRF tracker" sap:VirtualizedContainerService.HintSize="513.6,3256" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Update JRF tracker" sap:VirtualizedContainerService.HintSize="536,3738" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="strSiteID" />
         <Variable x:TypeArguments="x:String" Name="strListID" />
         <Variable x:TypeArguments="ss:SecureString" Name="strBearerToken" />
         <Variable x:TypeArguments="njl:JObject" Name="jsonListItem" />
         <Variable x:TypeArguments="x:String" Name="strNewItemID" />
+        <Variable x:TypeArguments="x:Int32" Name="intAttempt" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message - update JRF tracker" sap:VirtualizedContainerService.HintSize="479.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding new item to JRF tracker&quot;]" />
-      <Assign DisplayName="Assign init json object" sap:VirtualizedContainerService.HintSize="479.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <ui:LogMessage DisplayName="Log Message - update JRF tracker" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding new item to JRF tracker&quot;]" />
+      <Assign DisplayName="Assign init json object" sap:VirtualizedContainerService.HintSize="502,114.4" sap2010:WorkflowViewState.IdRef="Assign_10">
         <Assign.To>
           <OutArgument x:TypeArguments="njl:JObject">[jsonListItem]</OutArgument>
         </Assign.To>
@@ -194,7 +195,7 @@
           <InArgument x:TypeArguments="njl:JObject">[new JObject]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign  - init fields" sap:VirtualizedContainerService.HintSize="479.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign DisplayName="Assign  - init fields" sap:VirtualizedContainerService.HintSize="502,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
         <Assign.To>
           <OutArgument x:TypeArguments="njl:JToken">[jsonListItem("fields")]</OutArgument>
         </Assign.To>
@@ -202,7 +203,7 @@
           <InArgument x:TypeArguments="njl:JToken">[new JObject]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:MultipleAssign sap2010:Annotation.AnnotationText="field_0 - Date added to Tracker&#xA;field_1 - JRF Due Date&#xA;field_2 - Priority&#xA;field_3 - Disease Reference Number&#xA;field_4 - FOB number&#xA;field_5 - JRF number &#xA;field_6 - CPH&#xA;field_7 - JRF Type&#xA;field_9 - Surname&#xA;field_10 - Address&#xA;field_11 - Postcode&#xA;field_12 - Phone Number&#xA;field_13 - Mobile Number&#xA;EmailAddress - Email address&#xA;&#xA;" DisplayName="Create JSON list item" sap:VirtualizedContainerService.HintSize="479.6,829.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign sap2010:Annotation.AnnotationText="field_0 - Date added to Tracker&#xA;field_1 - JRF Due Date&#xA;field_2 - Priority&#xA;field_3 - Disease Reference Number&#xA;field_4 - FOB number&#xA;field_5 - JRF number &#xA;field_6 - CPH&#xA;field_7 - JRF Type&#xA;field_9 - Surname&#xA;field_10 - Address&#xA;field_11 - Postcode&#xA;field_12 - Phone Number&#xA;field_13 - Mobile Number&#xA;EmailAddress - Email address&#xA;&#xA;" DisplayName="Create JSON list item" sap:VirtualizedContainerService.HintSize="502,829.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -325,7 +326,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
-      <If Condition="[CBool(g_Config(&quot;PausePoint4&quot;))]" DisplayName="Pause Point 4?" sap:VirtualizedContainerService.HintSize="479.6,1087.2" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[CBool(g_Config(&quot;PausePoint4&quot;))]" DisplayName="Pause Point 4?" sap:VirtualizedContainerService.HintSize="502,1087.2" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
           <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
@@ -356,9 +357,34 @@
           </Sequence>
         </If.Else>
       </If>
-      <ds:Add_Sharepoint_List_Item DisplayName="Add Sharepoint List Item (Add_Sharepoint_List_Item)" sap:VirtualizedContainerService.HintSize="479.6,332.8" sap2010:WorkflowViewState.IdRef="Add_Sharepoint_List_Item_3" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strBody="[jsonListItem]" in_strListID="[g_Config(&quot;JRFTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;JRFTrackerSiteID&quot;).ToString]" out_strID="[strNewItemID]" />
-      <ui:LogMessage DisplayName="Log Message - add file" sap:VirtualizedContainerService.HintSize="479.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Appending JRF to new JRF tracker item&quot;]" />
-      <ui:InvokeProcess ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process - add file attachment" FolderPath="APHA Root/Outbreak Tracing" sap:VirtualizedContainerService.HintSize="479.6,343.2" sap2010:WorkflowViewState.IdRef="InvokeProcess_2" ProcessName="Add.Sharepoint.File.Attachment" UsePackage="False">
+      <ui:RetryScope DisplayName="Retry Scope - add list item" sap:VirtualizedContainerService.HintSize="502,814.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Warn" RetryInterval="00:00:03">
+        <ui:RetryScope.ActivityBody>
+          <ActivityAction>
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,674" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - add JRF tracker item attempt" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Updating JRF tracker - attempt &quot;+intAttempt.ToString+&quot; /3&quot;]" />
+              <ds:Add_Sharepoint_List_Item DisplayName="Add Sharepoint List Item (Add_Sharepoint_List_Item)" sap:VirtualizedContainerService.HintSize="434,332.8" sap2010:WorkflowViewState.IdRef="Add_Sharepoint_List_Item_3" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strBody="[jsonListItem]" in_strListID="[g_Config(&quot;JRFTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;JRFTrackerSiteID&quot;).ToString]" out_strID="[strNewItemID]" />
+              <Assign DisplayName="Increment JRF tracker update attempt" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[intAttempt]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[intAttempt+1]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </ui:RetryScope.ActivityBody>
+        <ui:RetryScope.Condition>
+          <ActivityFunc x:TypeArguments="x:Boolean" />
+        </ui:RetryScope.Condition>
+      </ui:RetryScope>
+      <ui:LogMessage DisplayName="Log Message - add file" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;List item added successfully. Appending JRF to new JRF tracker item&quot;]" />
+      <ui:InvokeProcess ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" OutputArguments="{x:Null}" DisplayName="Invoke Process - add file attachment" FolderPath="APHA Root/Outbreak Tracing" sap:VirtualizedContainerService.HintSize="502,343.2" sap2010:WorkflowViewState.IdRef="InvokeProcess_2" ProcessName="Add.Sharepoint.File.Attachment" UsePackage="False">
         <ui:InvokeProcess.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_strSharepointURL">[g_Config("JRFTrackerURL").ToString]</InArgument>
           <InArgument x:TypeArguments="x:Int32" x:Key="in_strListID">[CInt(strNewItemID)]</InArgument>

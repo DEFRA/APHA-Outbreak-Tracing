@@ -14,13 +14,13 @@
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[23.10.13]",
     "UiPath.WebAPI.Activities": "[1.21.1]",
-    "UiPath.Word.Activities": "[2.0.1]"
+    "UiPath.Word.Activities": "[2.2.0]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.8.0",
-  "projectVersion": "1.0.1-alpha.14",
+  "projectVersion": "1.0.1-alpha.18",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -84,6 +84,20 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Process\\tc02 Process Transaction - Zonal.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b3160429-35ad-4bd6-9e56-46fec8e0d4c1",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 User Edit JRF v2.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "46006934-e3fd-47e3-bf50-88bfa64c75e0",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Read TRF.xaml"
       }
     ],
     "saveToCloud": false

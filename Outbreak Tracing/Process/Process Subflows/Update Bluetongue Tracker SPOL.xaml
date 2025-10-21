@@ -163,7 +163,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Update_Bluetongue_Tracker" sap:VirtualizedContainerService.HintSize="1451.6000000000001,4755.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Update_Bluetongue_Tracker" sap:VirtualizedContainerService.HintSize="1451.6000000000001,6270" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Default="[new JObject]" Name="jsonEditItem" />
       <Variable x:TypeArguments="ss:SecureString" Name="strBearerToken" />
@@ -183,15 +183,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - check existing item bluetongue tracker" sap:VirtualizedContainerService.HintSize="644,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking for existing list items in Bluetongue tracker under BTD &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF &quot;+io_dictFormDetails(&quot;TRF&quot;)]" />
-    <ds:Get_List_Items in_strFilter="{x:Null}" sap2010:Annotation.AnnotationText="Outputs list items as a datatable" DisplayName="Get List Items (Get_List_Items)" sap:VirtualizedContainerService.HintSize="644,385.2" sap2010:WorkflowViewState.IdRef="Get_List_Items_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strColumnsNeeded="[g_Config(&quot;BluetongueTrackerColumns&quot;).ToString]" in_strListID="[g_Config(&quot;BluetongueTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" out_dtaListItems="[dtListItems]">
+    <ui:LogMessage DisplayName="Log Message - check existing item bluetongue tracker" sap:VirtualizedContainerService.HintSize="712,174.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking for existing list items in Bluetongue tracker under BTD &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF &quot;+io_dictFormDetails(&quot;TRF&quot;)]" />
+    <ds:Get_List_Items in_strFilter="{x:Null}" sap2010:Annotation.AnnotationText="Outputs list items as a datatable" DisplayName="Get List Items (Get_List_Items)" sap:VirtualizedContainerService.HintSize="712,382.8" sap2010:WorkflowViewState.IdRef="Get_List_Items_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),System.Security.SecureString)]" in_strColumnsNeeded="[g_Config(&quot;BluetongueTrackerColumns&quot;).ToString]" in_strListID="[g_Config(&quot;BluetongueTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" out_dtaListItems="[dtListItems]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ds:Get_List_Items>
-    <ui:MultipleAssign DisplayName="Initiate JSON fields object and update fields" sap:VirtualizedContainerService.HintSize="644,680" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Initiate JSON fields object and update fields" sap:VirtualizedContainerService.HintSize="712,679.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -341,16 +341,16 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <If Condition="[in_strFormType=&quot;Confirmed Case&quot;]" DisplayName="If confirmed case, check for existing records" sap:VirtualizedContainerService.HintSize="644,793.6" sap2010:WorkflowViewState.IdRef="If_10">
+    <If Condition="[in_strFormType=&quot;Confirmed Case&quot;]" DisplayName="If confirmed case, check for existing records" sap:VirtualizedContainerService.HintSize="712,791.6" sap2010:WorkflowViewState.IdRef="If_10">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,280" sap2010:WorkflowViewState.IdRef="Sequence_24">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,279.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Filter for existing BTD+TRF record" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_17">
+          <Assign DisplayName="Filter for existing BTD+TRF record" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_17">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataRow[]">[rowsExistingRecord]</OutArgument>
             </Assign.To>
@@ -358,7 +358,7 @@
               <InArgument x:TypeArguments="sd:DataRow[]">[dtListItems.Select("BTDNumber='"+io_dictFormDetails("ContactCase")+"' and TRFNumber='"+io_dictFormDetails("TRF")+"'")]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Get count of existing rows" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+          <Assign DisplayName="Get count of existing rows" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_18">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[intRowCount]</OutArgument>
             </Assign.To>
@@ -369,13 +369,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,342.4" sap2010:WorkflowViewState.IdRef="Sequence_25">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,341.6" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap2010:Annotation.AnnotationText="Always create new record for zonals" DisplayName="Set existing row count to 0" sap:VirtualizedContainerService.HintSize="434,145.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+          <Assign sap2010:Annotation.AnnotationText="Always create new record for zonals" DisplayName="Set existing row count to 0" sap:VirtualizedContainerService.HintSize="434,145.2" sap2010:WorkflowViewState.IdRef="Assign_19">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[intRowCount]</OutArgument>
             </Assign.To>
@@ -388,7 +388,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <Assign sap2010:Annotation.AnnotationText="Not relevant for Confirmed Cases" DisplayName="Update buffer zone field" sap:VirtualizedContainerService.HintSize="434,136.8" sap2010:WorkflowViewState.IdRef="Assign_20">
+          <Assign sap2010:Annotation.AnnotationText="Not relevant for Confirmed Cases" DisplayName="Update buffer zone field" sap:VirtualizedContainerService.HintSize="434,136.4" sap2010:WorkflowViewState.IdRef="Assign_20">
             <Assign.To>
               <OutArgument x:TypeArguments="njl:JToken">[jsonEditItem("fields")("BufferZone")]</OutArgument>
             </Assign.To>
@@ -404,19 +404,22 @@
         </Sequence>
       </If.Else>
     </If>
-    <Switch x:TypeArguments="x:Int32" DisplayName="BTD+TRF record count" Expression="[intRowCount]" sap:VirtualizedContainerService.HintSize="644,2698" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:Int32" DisplayName="BTD+TRF record count" Expression="[intRowCount]" sap:VirtualizedContainerService.HintSize="712,4218" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
         <Throw DisplayName="Throw BRE - multiple BTD/TRF rows" Exception="[new BusinessRuleException(&quot;Multiple rows returned from Bluetongue tracings tracker with BTD Number &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF Number &quot;+io_dictFormDetails(&quot;TRF&quot;)+&quot;. Please ensure that there is only a singular list entry for each BTD+TRF combination.&quot;)]" sap:VirtualizedContainerService.HintSize="334,91.2" sap2010:WorkflowViewState.IdRef="Throw_2" />
       </Switch.Default>
-      <Sequence x:Key="0" DisplayName="Create new record" sap:VirtualizedContainerService.HintSize="604,2462" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence x:Key="0" DisplayName="Create new record" sap:VirtualizedContainerService.HintSize="604,2933.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Name="intAttempt" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message - new item" sap:VirtualizedContainerService.HintSize="570,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Adding new bluetongue tracker item for BTD &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF &quot;+io_dictFormDetails(&quot;TRF&quot;)]" />
-        <Assign DisplayName="Get latest TRC number" sap:VirtualizedContainerService.HintSize="570,114.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <ui:LogMessage DisplayName="Log Message - new item" sap:VirtualizedContainerService.HintSize="570,174.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Adding new bluetongue tracker item for BTD &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF &quot;+io_dictFormDetails(&quot;TRF&quot;)]" />
+        <Assign DisplayName="Get latest TRC number" sap:VirtualizedContainerService.HintSize="570,114" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[strTRCMax]</OutArgument>
           </Assign.To>
@@ -424,7 +427,7 @@
             <InArgument x:TypeArguments="x:String">[dtListItems.AsEnumerable.Select(function(x) Regex.Match(x("BTDRestrictionNumber").ToString,"(?&lt;="+Now.Year.ToString+"\/TRC)[0-9]*$").Value).Max]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Calculate new TRC" sap:VirtualizedContainerService.HintSize="570,114.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign DisplayName="Calculate new TRC" sap:VirtualizedContainerService.HintSize="570,114" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("TRC")]</OutArgument>
           </Assign.To>
@@ -432,7 +435,7 @@
             <InArgument x:TypeArguments="x:String">[if(strTRCMax="","0001",String.Format("{0:D4}", (CInt(strTRCMax)+1)))]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign sap2010:Annotation.AnnotationText="Allow for possibility of new year wherein strTRCMax will return as empty due to no existing BTD Restriction Numbers for new year." DisplayName="Set BTD Restriction Number" sap:VirtualizedContainerService.HintSize="570,159.2" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign sap2010:Annotation.AnnotationText="Allow for possibility of new year wherein strTRCMax will return as empty due to no existing BTD Restriction Numbers for new year." DisplayName="Set BTD Restriction Number" sap:VirtualizedContainerService.HintSize="570,158" sap2010:WorkflowViewState.IdRef="Assign_2">
           <Assign.To>
             <OutArgument x:TypeArguments="njl:JToken">[jsonEditItem("fields")("BTDRestrictionNumber")]</OutArgument>
           </Assign.To>
@@ -445,7 +448,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </Assign>
-        <Assign DisplayName="Mimic in form details" sap:VirtualizedContainerService.HintSize="570,114.4" sap2010:WorkflowViewState.IdRef="Assign_21">
+        <Assign DisplayName="Mimic in form details" sap:VirtualizedContainerService.HintSize="570,114" sap2010:WorkflowViewState.IdRef="Assign_21">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("BTDRestrictionNumber")]</OutArgument>
           </Assign.To>
@@ -453,27 +456,27 @@
             <InArgument x:TypeArguments="x:String">[jsonEditItem("fields")("BTDRestrictionNumber").ToString]</InArgument>
           </Assign.Value>
         </Assign>
-        <If Condition="[CBool(g_Config(&quot;PausePoint5&quot;))]" DisplayName="Pause Point 5? - new" sap:VirtualizedContainerService.HintSize="570,1400" sap2010:WorkflowViewState.IdRef="If_7">
+        <If Condition="[CBool(g_Config(&quot;PausePoint5&quot;))]" DisplayName="Pause Point 5? - new" sap:VirtualizedContainerService.HintSize="570,1395.6" sap2010:WorkflowViewState.IdRef="If_7">
           <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="536,1138.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="536,1134.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - construct PP5 string" sap:VirtualizedContainerService.HintSize="502,312.8" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[jsonEditItem(&quot;fields&quot;)]">
+              <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - construct PP5 string" sap:VirtualizedContainerService.HintSize="502,312" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[jsonEditItem(&quot;fields&quot;)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="njl:JProperty">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="njl:JProperty" Name="currentJProperty" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,165.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Append current JSON field" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign DisplayName="Append current JSON field" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_6">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[strPP5]</OutArgument>
                         </Assign.To>
@@ -496,7 +499,7 @@
                   <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
                 </InvokeMethod.TargetObject>
               </InvokeMethod>
-              <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP5 - new" sap:VirtualizedContainerService.HintSize="502,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 5" IN_PopupMessage="[&quot;&lt;h1&gt;Add new record&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;No existing record was found for BTD Number &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF Number &quot;+io_dictFormDetails(&quot;TRF&quot;)+&quot;.&lt;br&gt;&quot;+&#xA;&quot;A new record will be added with the following values.&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;&quot;+strPP5+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If these values seem correct, please click the 'Continue' button. Otherwise, please click the 'Stop' button and proceed with the rest of this transaction manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 5" IN_WidthHeight="[{500,750}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_2" />
+              <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP5 - new" sap:VirtualizedContainerService.HintSize="502,434.8" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 5" IN_PopupMessage="[&quot;&lt;h1&gt;Add new record&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;No existing record was found for BTD Number &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF Number &quot;+io_dictFormDetails(&quot;TRF&quot;)+&quot;.&lt;br&gt;&quot;+&#xA;&quot;A new record will be added with the following values.&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;&quot;+strPP5+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If these values seem correct, please click the 'Continue' button. Otherwise, please click the 'Stop' button and proceed with the rest of this transaction manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 5" IN_WidthHeight="[{500,750}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_2" />
               <InvokeMethod DisplayName="PP5 - Start timer" sap:VirtualizedContainerService.HintSize="502,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
                 <InvokeMethod.TargetObject>
                   <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
@@ -505,7 +508,7 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_19">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -514,44 +517,69 @@
             </Sequence>
           </If.Else>
         </If>
-        <ds:Add_Sharepoint_List_Item out_strID="{x:Null}" DisplayName="Add Sharepoint List Item" sap:VirtualizedContainerService.HintSize="570,324" sap2010:WorkflowViewState.IdRef="Add_Sharepoint_List_Item_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strBody="[jsonEditItem]" in_strListID="[g_Config(&quot;BluetongueTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+        <ui:RetryScope DisplayName="Retry Scope - add bluetongue tracker item" sap:VirtualizedContainerService.HintSize="570,802.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Warn" RetryInterval="00:00:03">
+          <ui:RetryScope.ActivityBody>
+            <ActivityAction>
+              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,670.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - attempting bluetongue tracker update" sap:VirtualizedContainerService.HintSize="434,174.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Updating Bluetongue tracker - attempt &quot;+intAttempt.ToString+&quot; /3&quot;]" />
+                <ds:Add_Sharepoint_List_Item out_strID="{x:Null}" DisplayName="Add Sharepoint List Item" sap:VirtualizedContainerService.HintSize="434,330.8" sap2010:WorkflowViewState.IdRef="Add_Sharepoint_List_Item_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),Security.SecureString)]" in_strBody="[jsonEditItem]" in_strListID="[g_Config(&quot;BluetongueTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+                <Assign DisplayName="Increment bluetongue tracker update attempt" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_22">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[intAttempt]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[intAttempt+1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </ui:RetryScope.ActivityBody>
+          <ui:RetryScope.Condition>
+            <ActivityFunc x:TypeArguments="x:Boolean" />
+          </ui:RetryScope.Condition>
+        </ui:RetryScope>
       </Sequence>
-      <Sequence x:Key="1" DisplayName="Update existing record" sap:VirtualizedContainerService.HintSize="672,774.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence x:Key="1" DisplayName="Update existing record" sap:VirtualizedContainerService.HintSize="672,3983.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message - new item" sap:VirtualizedContainerService.HintSize="638,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Updating existing bluetongue tracker item for BTD &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF &quot;+io_dictFormDetails(&quot;TRF&quot;)]" />
-        <If Condition="[CBool(g_Config(&quot;PausePoint5&quot;))]" DisplayName="Pause Point 5? - update" sap:VirtualizedContainerService.HintSize="638,215.2" sap2010:WorkflowViewState.IdRef="If_5">
+        <ui:LogMessage DisplayName="Log Message - new item" sap:VirtualizedContainerService.HintSize="638,174.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Updating existing bluetongue tracker item for BTD &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF &quot;+io_dictFormDetails(&quot;TRF&quot;)]" />
+        <If Condition="[CBool(g_Config(&quot;PausePoint5&quot;))]" DisplayName="Pause Point 5? - update" sap:VirtualizedContainerService.HintSize="638,2854" sap2010:WorkflowViewState.IdRef="If_5">
           <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="604,2600.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="604,2593.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - construct PP5 string" sap:VirtualizedContainerService.HintSize="570,700.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonEditItem(&quot;fields&quot;)]">
+              <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - construct PP5 string" sap:VirtualizedContainerService.HintSize="570,699.2" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonEditItem(&quot;fields&quot;)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="njl:JProperty">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="njl:JProperty" Name="currentJProperty" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,553.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,552.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[currentJProperty.Value.ToString = rowsExistingRecord(0)(currentJProperty.Name).ToString]" DisplayName="If new value different to read value" sap:VirtualizedContainerService.HintSize="502,493.6" sap2010:WorkflowViewState.IdRef="If_6">
+                      <If Condition="[currentJProperty.Value.ToString = rowsExistingRecord(0)(currentJProperty.Name).ToString]" DisplayName="If new value different to read value" sap:VirtualizedContainerService.HintSize="502,492.4" sap2010:WorkflowViewState.IdRef="If_6">
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Append current JSON field" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <Assign DisplayName="Append current JSON field" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_4">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[strPP5]</OutArgument>
                               </Assign.To>
@@ -562,14 +590,14 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,165.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Append current JSON field with change identified" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                            <Assign DisplayName="Append current JSON field with change identified" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_5">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[strPP5]</OutArgument>
                               </Assign.To>
@@ -590,15 +618,15 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
-              <If Condition="[rowsExistingRecord(0)(&quot;BTDRestrictionNumber&quot;).ToString=&quot;&quot;]" DisplayName="If record does not have BTDRestrictionNumber" sap:VirtualizedContainerService.HintSize="570,1074.4" sap2010:WorkflowViewState.IdRef="If_8">
+              <If Condition="[rowsExistingRecord(0)(&quot;BTDRestrictionNumber&quot;).ToString=&quot;&quot;]" DisplayName="If record does not have BTDRestrictionNumber" sap:VirtualizedContainerService.HintSize="570,1071.2" sap2010:WorkflowViewState.IdRef="If_8">
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,623.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,621.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Get latest TRC number" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign DisplayName="Get latest TRC number" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[strTRCMax]</OutArgument>
                       </Assign.To>
@@ -606,7 +634,7 @@
                         <InArgument x:TypeArguments="x:String">[dtListItems.AsEnumerable.Select(function(x) Regex.Match(x("BTDRestrictionNumber").ToString,"(?&lt;="+Now.Year.ToString+"\/TRC)[0-9]*$").Value).Max]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Calculate new TRC" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign DisplayName="Calculate new TRC" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_9">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("TRC")]</OutArgument>
                       </Assign.To>
@@ -614,7 +642,7 @@
                         <InArgument x:TypeArguments="x:String">[if(strTRCMax="","0001",(CInt(strTRCMax)+1).ToString)]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Store BTDRestrictionNumber" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign DisplayName="Store BTDRestrictionNumber" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_13">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("BTDRestrictionNumber")]</OutArgument>
                       </Assign.To>
@@ -622,7 +650,7 @@
                         <InArgument x:TypeArguments="x:String">["BTR/"+Now.Year.ToString+"/TRC"+io_dictFormDetails("TRC")]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Update BTDRestrictionNumber on tracker" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
+                    <Assign DisplayName="Update BTDRestrictionNumber on tracker" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_11">
                       <Assign.To>
                         <OutArgument x:TypeArguments="njl:JToken">[jsonEditItem("fields")("BTDRestrictionNumber")]</OutArgument>
                       </Assign.To>
@@ -630,7 +658,7 @@
                         <InArgument x:TypeArguments="njl:JToken">[io_dictFormDetails("BTDRestrictionNumber")]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Update pause point string" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign DisplayName="Update pause point string" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_12">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[strPP5]</OutArgument>
                       </Assign.To>
@@ -641,13 +669,13 @@
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,280" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,279.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Store BTDRestrictionNumber" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_14">
+                    <Assign DisplayName="Store BTDRestrictionNumber" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_14">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("BTDRestrictionNumber")]</OutArgument>
                       </Assign.To>
@@ -655,7 +683,7 @@
                         <InArgument x:TypeArguments="x:String">[rowsExistingRecord(0)("BTDRestrictionNumber").ToString]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Store TRC" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <Assign DisplayName="Store TRC" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_10">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("TRC")]</OutArgument>
                       </Assign.To>
@@ -671,7 +699,7 @@
                   <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
                 </InvokeMethod.TargetObject>
               </InvokeMethod>
-              <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP5 - existing" sap:VirtualizedContainerService.HintSize="570,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 5" IN_PopupMessage="[&quot;&lt;h1&gt;Update existing record&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;An existing record was found for BTD Number &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF Number &quot;+io_dictFormDetails(&quot;TRF&quot;)+&quot;.&lt;br&gt;&quot;+&#xA;&quot;This record will be updated with the following values. Please note that values in red are changes from the record's existing values.&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;&quot;+strPP5+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If these values seem correct, please click the 'Continue' button. Otherwise, please click the 'Stop' button and proceed with the rest of this transaction manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 5" IN_WidthHeight="[{500,750}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
+              <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="PP5 - existing" sap:VirtualizedContainerService.HintSize="570,434.8" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed at Pause Point 5" IN_PopupMessage="[&quot;&lt;h1&gt;Update existing record&lt;/h1&gt;&quot;+&#xA;&quot;&lt;p&gt;An existing record was found for BTD Number &quot;+io_dictFormDetails(&quot;ContactCase&quot;)+&quot; and TRF Number &quot;+io_dictFormDetails(&quot;TRF&quot;)+&quot;.&lt;br&gt;&quot;+&#xA;&quot;This record will be updated with the following values. Please note that values in red are changes from the record's existing values.&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;&quot;+strPP5+&quot;&lt;/p&gt;&quot;+&#xA;&quot;&lt;p&gt;If these values seem correct, please click the 'Continue' button. Otherwise, please click the 'Stop' button and proceed with the rest of this transaction manually.&lt;/p&gt;&quot;]" IN_PopupTitle="Pause Point 5" IN_WidthHeight="[{500,750}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
               <InvokeMethod DisplayName="PP5 - Start timer" sap:VirtualizedContainerService.HintSize="570,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Start">
                 <InvokeMethod.TargetObject>
                   <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
@@ -680,7 +708,7 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -689,7 +717,35 @@
             </Sequence>
           </If.Else>
         </If>
-        <ds:Edit_Sharepoint_List_Item DisplayName="Edit Sharepoint List Item" sap:VirtualizedContainerService.HintSize="638,324" sap2010:WorkflowViewState.IdRef="Edit_Sharepoint_List_Item_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),SecureString)]" in_strBody="[jsonEditItem]" in_strItemID="[rowsExistingRecord(0)(&quot;ID&quot;).ToString]" in_strListID="[g_Config(&quot;BluetongueTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+        <ui:RetryScope DisplayName="Retry Scope - edit bluetongue tracker item" sap:VirtualizedContainerService.HintSize="638,894.8" sap2010:WorkflowViewState.IdRef="RetryScope_3" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Warn" RetryInterval="00:00:03">
+          <ui:RetryScope.ActivityBody>
+            <ActivityAction>
+              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,670.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intAttempt" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - attempting bluetongue tracker edit" sap:VirtualizedContainerService.HintSize="434,174.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Updating Bluetongue tracker - attempt &quot;+intAttempt.ToString+&quot; /3&quot;]" />
+                <ds:Edit_Sharepoint_List_Item DisplayName="Edit Sharepoint List Item" sap:VirtualizedContainerService.HintSize="434,330.8" sap2010:WorkflowViewState.IdRef="Edit_Sharepoint_List_Item_1" in_strBearerToken="[CType(g_Config(&quot;BearerToken&quot;),SecureString)]" in_strBody="[jsonEditItem]" in_strItemID="[rowsExistingRecord(0)(&quot;ID&quot;).ToString]" in_strListID="[g_Config(&quot;BluetongueTrackerListID&quot;).ToString]" in_strSiteID="[g_Config(&quot;BluetongueTrackerSiteID&quot;).ToString]" />
+                <Assign DisplayName="Increment bluetongue tracker edit attempt" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_24">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[intAttempt]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[intAttempt+1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </ui:RetryScope.ActivityBody>
+          <ui:RetryScope.Condition>
+            <ActivityFunc x:TypeArguments="x:Boolean" />
+          </ui:RetryScope.Condition>
+        </ui:RetryScope>
       </Sequence>
     </Switch>
   </Sequence>
