@@ -125,7 +125,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Read_TRF" sap:VirtualizedContainerService.HintSize="1451.6000000000001,7627.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Read_TRF" sap:VirtualizedContainerService.HintSize="1451.6000000000001,8273.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strTRFText" />
       <Variable x:TypeArguments="x:String" Name="strDateVisitDue" />
@@ -208,7 +208,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <Sequence DisplayName="Risk, Priority and ContactIP" sap:VirtualizedContainerService.HintSize="604,3844.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Assign DisplayName="Replace special character bullet points in Instructions" sap:VirtualizedContainerService.HintSize="604,114.4" sap2010:WorkflowViewState.IdRef="Assign_23">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("Instructions")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Regex.Replace(out_dictFormDetails("Instructions"),"[•]","-")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Risk, Priority and ContactIP" sap:VirtualizedContainerService.HintSize="604,3847.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Default="[new Dictionary(of String,Object)]" Name="dictCheckBoxes" />
         <Variable x:TypeArguments="x:Int32" Name="intPriorityChecks" />
@@ -269,27 +277,27 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:InvokeCode>
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intPriorityChecks]" DisplayName="For Each currentPriority" sap:VirtualizedContainerService.HintSize="570,681.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[{&quot;High&quot;,&quot;Medium&quot;,&quot;Low&quot;}]">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intPriorityChecks]" DisplayName="For Each currentPriority" sap:VirtualizedContainerService.HintSize="570,682.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[{&quot;High&quot;,&quot;Medium&quot;,&quot;Low&quot;}]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:String" Name="currentPriority" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,534.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,535.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[CInt(dictCheckBoxes(&quot;CheckBox&quot;+(intPriorityChecks+1).ToString)) = 1]" DisplayName="If current checkbox value is 1 - priority" sap:VirtualizedContainerService.HintSize="502,474.4" sap2010:WorkflowViewState.IdRef="If_3">
+              <If Condition="[CInt(dictCheckBoxes(&quot;CheckBox&quot;+(intPriorityChecks+1).ToString)) = 1]" DisplayName="If current checkbox value is 1 - priority" sap:VirtualizedContainerService.HintSize="502,475.2" sap2010:WorkflowViewState.IdRef="If_3">
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,221.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,222.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Map priority to current iteration" sap:VirtualizedContainerService.HintSize="434,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+                    <Assign DisplayName="Map priority to current iteration" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("Priority")]</OutArgument>
                       </Assign.To>
@@ -347,27 +355,27 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intRiskChecks]" DisplayName="For Each currentRisk" sap:VirtualizedContainerService.HintSize="570,681.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[{&quot;High&quot;,&quot;Medium&quot;,&quot;Low&quot;}]">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intRiskChecks]" DisplayName="For Each currentRisk" sap:VirtualizedContainerService.HintSize="570,682.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[{&quot;High&quot;,&quot;Medium&quot;,&quot;Low&quot;}]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:String" Name="currentRisk" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,534.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,535.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[CInt(dictCheckBoxes(&quot;CheckBox&quot;+(intRiskChecks+4).ToString)) = 1]" DisplayName="If current checkbox value is 1 - risk" sap:VirtualizedContainerService.HintSize="502,474.4" sap2010:WorkflowViewState.IdRef="If_4">
+              <If Condition="[CInt(dictCheckBoxes(&quot;CheckBox&quot;+(intRiskChecks+4).ToString)) = 1]" DisplayName="If current checkbox value is 1 - risk" sap:VirtualizedContainerService.HintSize="502,475.2" sap2010:WorkflowViewState.IdRef="If_4">
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,221.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,222.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Map risk to current iteration" sap:VirtualizedContainerService.HintSize="434,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign DisplayName="Map risk to current iteration" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_12">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("Risk")]</OutArgument>
                       </Assign.To>
@@ -425,27 +433,27 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intContactChecks]" DisplayName="For Each currentContact" sap:VirtualizedContainerService.HintSize="570,681.6" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[{&quot;Direct&quot;,&quot;Indirect&quot;}]">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intContactChecks]" DisplayName="For Each currentContact" sap:VirtualizedContainerService.HintSize="570,682.4" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[{&quot;Direct&quot;,&quot;Indirect&quot;}]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:String" Name="currentContact" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,534.4" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,535.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[CInt(dictCheckBoxes(&quot;CheckBox&quot;+(intContactChecks+9).ToString)) = 1]" DisplayName="If current checkbox value is 1 - contact" sap:VirtualizedContainerService.HintSize="502,474.4" sap2010:WorkflowViewState.IdRef="If_8">
+              <If Condition="[CInt(dictCheckBoxes(&quot;CheckBox&quot;+(intContactChecks+9).ToString)) = 1]" DisplayName="If current checkbox value is 1 - contact" sap:VirtualizedContainerService.HintSize="502,475.2" sap2010:WorkflowViewState.IdRef="If_8">
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,221.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,222.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Map contact to current iteration" sap:VirtualizedContainerService.HintSize="434,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign DisplayName="Map contact to current iteration" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_13">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("ContactIP")]</OutArgument>
                       </Assign.To>
@@ -504,7 +512,7 @@
         </If.Else>
       </If>
     </Sequence>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch - Date visit due" Expression="[Regex.Match(strTRFText,&quot;(?s)(?&lt;=Date Visit Due\:).*?(?=Job number\:)&quot;).Value.Trim]" sap:VirtualizedContainerService.HintSize="604,366.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch - Date visit due" Expression="[Regex.Match(strTRFText,&quot;(?s)(?&lt;=Date Visit Due\:).*?(?=Job number\:)&quot;).Value.Trim]" sap:VirtualizedContainerService.HintSize="604,894.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
         <Throw DisplayName="Throw BRE - DVD not recognised" Exception="[new BusinessRuleException(&quot;Date Visit Due field not recognised: '&quot;+Regex.Match(strTRFText,&quot;(?s)(?&lt;=Date Visit Due\:).*?(?=Job Number\:)&quot;).Value.Trim+&quot;'&quot;)]" sap:VirtualizedContainerService.HintSize="334,91.2" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </Switch.Default>
@@ -514,7 +522,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign x:Key="ASAP" DisplayName="Date Visit Due is today" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign x:Key="ASAP" DisplayName="Date Visit Due is today" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("DateVisitDue")]</OutArgument>
         </Assign.To>
@@ -522,7 +530,7 @@
           <InArgument x:TypeArguments="x:String">[Now.ToString("dd/MM/yyyy")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign x:Key="24-48 hrs after JRF raised" DisplayName="Date Visit Due is today+2" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign x:Key="24-48 hrs after JRF raised" DisplayName="Date Visit Due is today+2" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_4">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("DateVisitDue")]</OutArgument>
         </Assign.To>
@@ -530,7 +538,7 @@
           <InArgument x:TypeArguments="x:String">[Now.AddDays(2).ToString("dd/MM/yyyy")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign x:Key="48-72 hrs after JRF raised" DisplayName="Date Visit Due is today+3" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign x:Key="48-72 hrs after JRF raised" DisplayName="Date Visit Due is today+3" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("DateVisitDue")]</OutArgument>
         </Assign.To>
@@ -538,7 +546,7 @@
           <InArgument x:TypeArguments="x:String">[Now.AddDays(3).ToString("dd/MM/yyyy")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign x:Key="72-96 hrs after JRF raised" DisplayName="Date Visit Due is today+4" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign x:Key="72-96 hrs after JRF raised" DisplayName="Date Visit Due is today+4" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("DateVisitDue")]</OutArgument>
         </Assign.To>
@@ -781,7 +789,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="Species" sap:VirtualizedContainerService.HintSize="604,1700" sap2010:WorkflowViewState.IdRef="Sequence_24">
+    <Sequence DisplayName="Species" sap:VirtualizedContainerService.HintSize="604,1701.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -797,27 +805,27 @@
           </InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtSpecies]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="570,789.6" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtSpecies]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="570,791.2" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,591.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,592.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[Regex.Match(out_dictFormDetails(&quot;Instructions&quot;),&quot;(?si)\b&quot;+CurrentRow(&quot;TRF Key word&quot;).ToString).Success]" DisplayName="If search term found" sap:VirtualizedContainerService.HintSize="502,531.2" sap2010:WorkflowViewState.IdRef="If_9">
+              <If Condition="[Regex.Match(out_dictFormDetails(&quot;Instructions&quot;),&quot;(?si)\b&quot;+CurrentRow(&quot;TRF Key word&quot;).ToString).Success]" DisplayName="If search term found" sap:VirtualizedContainerService.HintSize="502,532.8" sap2010:WorkflowViewState.IdRef="If_9">
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,278.4" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,280" sap2010:WorkflowViewState.IdRef="Sequence_27">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Append species" sap:VirtualizedContainerService.HintSize="434,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+                    <Assign DisplayName="Append species" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_16">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("Species")]</OutArgument>
                       </Assign.To>
@@ -825,7 +833,7 @@
                         <InArgument x:TypeArguments="x:String">[out_dictFormDetails("Species")+CurrentRow("Species").ToString+","]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Store SPOL species category" sap:VirtualizedContainerService.HintSize="434,104.8" sap2010:WorkflowViewState.IdRef="Assign_18">
+                    <Assign DisplayName="Store SPOL species category" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_18">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("SPOLSpecies")]</OutArgument>
                       </Assign.To>

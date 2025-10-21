@@ -123,26 +123,31 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Search_CPH" sap:VirtualizedContainerService.HintSize="1596.8,3082.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Search_CPH" sap:VirtualizedContainerService.HintSize="1596.8,3272.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS - search CPH" sap:VirtualizedContainerService.HintSize="1596.8,3059.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="6cbd1391-c18e-4d4f-ac5a-6cee4cd7100e" Version="V2">
+    <InvokeMethod DisplayName="Invoke Method - bring browser to foreground" sap:VirtualizedContainerService.HintSize="1596.8,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="BringToForeground">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="ui:UiElement">[DirectCast(g_Config("NDOMS_browser"),UiElement)]</InArgument>
+      </InvokeMethod.TargetObject>
+    </InvokeMethod>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS - search CPH" sap:VirtualizedContainerService.HintSize="1596.8,3080.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="6cbd1391-c18e-4d4f-ac5a-6cee4cd7100e" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Search CPH" sap:VirtualizedContainerService.HintSize="1562.8,2898" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Search CPH" sap:VirtualizedContainerService.HintSize="1562.8,2919.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message - search cPH" sap:VirtualizedContainerService.HintSize="1528.8,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Searching NDOMS for CPH &quot;+in_strCPH]" />
-            <ui:RetryScope sap2010:Annotation.AnnotationText="This doesn't execute correctly sometimes so retry to ensure." DisplayName="Retry Scope - navigate to search page" sap:VirtualizedContainerService.HintSize="1528.8,600.8" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" sap2010:Annotation.AnnotationText="This doesn't execute correctly sometimes so retry to ensure." DisplayName="Retry Scope - navigate to search page" sap:VirtualizedContainerService.HintSize="1528.8,624" sap2010:WorkflowViewState.IdRef="RetryScope_1">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,360" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -233,7 +238,7 @@
                     </ui:WaitUiElementAppear.Target>
                   </ui:WaitUiElementAppear>
                 </PickBranch.Trigger>
-                <Sequence sap:VirtualizedContainerService.HintSize="416,951.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="416,952.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
