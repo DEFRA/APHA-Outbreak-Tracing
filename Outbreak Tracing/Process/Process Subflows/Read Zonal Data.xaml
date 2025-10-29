@@ -117,7 +117,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Read_Zonal_Data" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1617.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Read_Zonal_Data" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1956" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtTransactionItem" />
       <Variable x:TypeArguments="x:String" Name="strZonalInstructionsTemplate" />
@@ -130,8 +130,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - reading zonal batch data" sap:VirtualizedContainerService.HintSize="479.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Reading batch data for current batch: &quot;+g_TransactionItem(&quot;Species&quot;).ToString+&quot;, &quot;+g_TransactionItem(&quot;LKL&quot;).ToString+&quot;, &quot;+g_TransactionItem(&quot;Buffer Zone&quot;).ToString]" />
-    <Assign DisplayName="Current batch tags" sap:VirtualizedContainerService.HintSize="479.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:LogMessage DisplayName="Log Message - reading zonal batch data" sap:VirtualizedContainerService.HintSize="503.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Reading batch data for current batch: &quot;+g_TransactionItem(&quot;Species&quot;).ToString+&quot;, &quot;+g_TransactionItem(&quot;LKL&quot;).ToString+&quot;, &quot;+g_TransactionItem(&quot;Buffer Zone&quot;).ToString]" />
+    <Assign DisplayName="Current batch tags" sap:VirtualizedContainerService.HintSize="503.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[dtBatchTags]</OutArgument>
       </Assign.To>
@@ -139,14 +139,14 @@
         <InArgument x:TypeArguments="sd:DataTable">[g_TransactionData.Select("Species='"+g_TransactionItem("Species").ToString+"' and LKL='"+g_TransactionItem("LKL").ToString+"' and [Buffer Zone]='"+g_TransactionItem("Buffer Zone").ToString+"'").CopyToDataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Validate Zonal Spreadsheet - Invoke Workflow File (Process\Process Subflows\Validate Zonal Spreadsheet.xaml)" sap:VirtualizedContainerService.HintSize="479.6,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\Validate Zonal Rows.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Validate Zonal Spreadsheet - Invoke Workflow File (Process\Process Subflows\Validate Zonal Spreadsheet.xaml)" sap:VirtualizedContainerService.HintSize="503.6,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\Validate Zonal Rows.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtZonal">[dtBatchTags]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtCounties">[in_dtCounties]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtSpecies">[in_dtSpecies]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:MultipleAssign DisplayName="Store zonal batch data to dictionary" sap:VirtualizedContainerService.HintSize="479.6,648.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Store zonal batch data to dictionary" sap:VirtualizedContainerService.HintSize="503.6,648.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -295,7 +295,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <Assign DisplayName="Concatenate all tags" sap:VirtualizedContainerService.HintSize="479.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Concatenate all tags" sap:VirtualizedContainerService.HintSize="503.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strTags]</OutArgument>
       </Assign.To>
@@ -303,19 +303,40 @@
         <InArgument x:TypeArguments="x:String">[String.Join(Environment.NewLine,dtBatchTags.AsEnumerable.Select(function(x) x("Animal ID / Batch ID").ToString))]</InArgument>
       </Assign.Value>
     </Assign>
-    <ucas:ReadStorageText TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Read here rather than initialisation so that the String.Format will refresh" DisplayName="Read Storage Text - zonal instructions template" sap:VirtualizedContainerService.HintSize="479.6,212.4" sap2010:WorkflowViewState.IdRef="ReadStorageText_1" Path="ZonalInstructionsTemplate.txt" Result="[strZonalInstructionsTemplate]" StorageBucketName="Outbreak Tracing">
+    <ucas:ReadStorageText TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Read here rather than initialisation so that the String.Format will refresh" DisplayName="Read Storage Text - zonal instructions template" sap:VirtualizedContainerService.HintSize="503.6,212.4" sap2010:WorkflowViewState.IdRef="ReadStorageText_1" Path="ZonalInstructionsTemplate.txt" Result="[strZonalInstructionsTemplate]" StorageBucketName="Outbreak Tracing">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ucas:ReadStorageText>
-    <Assign sap2010:Annotation.AnnotationText="Add in all template values except address. Address is captured later from NDOMS and can be formatted in then." DisplayName="Format zonal instructions" sap:VirtualizedContainerService.HintSize="479.6,151.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="Add list of tags into instructions template" DisplayName="Format zonal instructions" sap:VirtualizedContainerService.HintSize="503.6,145.6" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("Instructions")]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String" xml:space="preserve">[String.Format(strZonalInstructionsTemplate,
+        <InArgument x:TypeArguments="x:String">[String.Format(strZonalInstructionsTemplate,strTags)]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:CommentOut sap2010:Annotation.AnnotationText="Old instructions formatting. Keep in case it changes back." DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="503.6,344.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="468,211.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap2010:Annotation.AnnotationText="Add in all template values except address. Address is captured later from NDOMS and can be formatted in then." DisplayName="Format zonal instructions" sap:VirtualizedContainerService.HintSize="434,151.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_dictFormDetails("Instructions")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[String.Format(strZonalInstructionsTemplate,
 	out_dictFormDetails("BufferZone"),
 	out_dictFormDetails("SpeciesCount"),
 	out_dictFormDetails("Species"),
@@ -325,12 +346,20 @@
 	If(g_TransactionItem("Country").ToString.ToLower="scotland","MR03-Scotland","EXD01(BT)(EW)"),
 	out_dictFormDetails("ContactDate"),
 	strTags)]</InArgument>
-      </Assign.Value>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </Assign>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
