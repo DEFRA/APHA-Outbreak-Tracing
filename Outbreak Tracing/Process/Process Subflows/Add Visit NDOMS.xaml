@@ -143,19 +143,19 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add Visit NDOMS" sap:VirtualizedContainerService.HintSize="1451.6000000000001,7405.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add Visit NDOMS" sap:VirtualizedContainerService.HintSize="1451.6000000000001,7163.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Chromium API input mode as default because Simulate is largely incompatible.&#xA;Simulate used where possible as it is faster - activities are annotated accordingly." AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS" sap:VirtualizedContainerService.HintSize="587.6,7382" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[g_Config(&quot;NDOMS_browser&quot;)]" ScopeGuid="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Chromium API input mode as default because Simulate is largely incompatible.&#xA;Simulate used where possible as it is faster - activities are annotated accordingly." AttachMode="ByInstance" CloseMode="Never" DisplayName="Attach NDOMS" sap:VirtualizedContainerService.HintSize="587.6,7140" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[DirectCast(g_Config(&quot;NDOMS_browser&quot;),UiElement)]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[g_Config(&quot;NDOMS_browser&quot;)]" ScopeGuid="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Navigate to visit details" sap:VirtualizedContainerService.HintSize="553.6,7176" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Navigate to visit details" sap:VirtualizedContainerService.HintSize="553.6,6934" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd1:DataTable" Name="dtVisits" />
               <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(of String)]" Name="listIncidents" />
@@ -325,35 +325,53 @@
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1766, 375, 80" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'INPUT visitduedate'" FullSelectorArgument="&lt;webctrl id='visitduedate' tag='INPUT' aaname='Date Visit Due' /&gt;" FuzzySelectorArgument="&lt;webctrl id='visitduedate' tag='INPUT' aaname='Date Visit Due' type='date' class='border-0 text-defra-warm-grey-900 block rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="d17e85c7-349d-42ed-a892-078601f0755d" InformativeScreenshot="340df3dc77d407c9c57881636acd248e.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NInjectJsScript.Target>
             </uix:NInjectJsScript>
-            <If Condition="[in_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal - format instructions" sap:VirtualizedContainerService.HintSize="519.6,361.6" sap2010:WorkflowViewState.IdRef="If_5">
-              <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <ui:CommentOut sap2010:Annotation.AnnotationText="Old instructions formatting. Keep in case it changes back." DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="519.6,118" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="536,412.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Format address into instructions" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_3">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("Instructions")]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[String.Format(io_dictFormDetails("Instructions"),io_dictFormDetails("Address"))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
+                  <If Condition="[in_strFormType=&quot;Zonal&quot;]" DisplayName="If zonal - format instructions" sap:VirtualizedContainerService.HintSize="502,352.8" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Format address into instructions" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[io_dictFormDetails("Instructions")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[String.Format(io_dictFormDetails("Instructions"),io_dictFormDetails("Address"))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
                 </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </If.Else>
-            </If>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
             <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Instructions" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="519.6,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="7cae1b54-68e8-4def-b0d4-cbb15d6a31f5" Text="[io_dictFormDetails(&quot;Instructions&quot;)]" Version="V3">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://t1ndoms.app.defra.gov.uk/premises/152/visits/add" DesignTimeRectangle="266, 1046, 3475, 230" DesignTimeScaleFactor="2.5" ElementType="InputBox" FriendlyName="'TEXTAREA instructions'" FullSelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' /&gt;" FuzzySelectorArgument="&lt;webctrl id='instructions' tag='TEXTAREA' aaname='Instructions' type='text' class='border-0 text-defra-warm-grey-900 block w-full rounded-md py-1.5 shadow-sm ring-inset placeholder:text-defra-warm-grey-400 focus:ring-2 focus:ring-inset focus:ring-defra-yellow-vivid-600 ring-1 ring-defra-warm-grey-300 sm:text-sm' /&gt;" Guid="b7f9d41a-298d-434c-b176-ea414eda786f" InformativeScreenshot="eeea13b58ea90a6f7c1352e612e75c94.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Add Visit Details for Premises ID *' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
